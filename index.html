@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ella — GIS Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1b2a;
+      --slate:   #1a2d42;
+      --panel:   #152234;
+      --border:  #243750;
+      --amber:   #e8a838;
+      --amber-dim: rgba(232, 168, 56, 0.12);
+      --text:    #d4dde8;
+      --muted:   #6b85a0;
+      --white:   #f0f5fa;
+      --tag-bg:  #1e3347;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--navy);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* subtle contour line background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.018) 80px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.018) 80px
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 27, 42, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 60px;
+    }
+
+    .nav-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-name span {
+      color: var(--amber);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--amber); }
+
+    /* ─── LAYOUT ─── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+    }
+
+    section { padding: 5rem 0; }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding: 7rem 0 5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover { background: #f0b94a; }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    .hero-coords {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--border);
+      text-align: right;
+      line-height: 1.9;
+    }
+
+    /* ─── SECTION HEADINGS ─── */
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+      font-size: 0.97rem;
+    }
+
+    /* ─── PROJECT GRID ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.75rem;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--amber-dim), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .project-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-3px);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    /* coordinate annotation — the signature element */
+    .card-coord {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.9rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--border);
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .project-card:hover .card-coord { color: rgba(232,168,56,0.45); }
+
+    .card-type {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.35;
+      margin-bottom: 0.65rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+    }
+
+    .card-cta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+
+    .card-cta::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .project-card:hover .card-cta::after { transform: translateX(4px); }
+
+    /* placeholder card */
+    .card-placeholder {
+      border-style: dashed;
+      border-color: var(--border);
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    .card-placeholder:hover {
+      border-color: var(--border);
+      transform: none;
+    }
+
+    .card-placeholder::before { display: none; }
+
+    /* ─── ABOUT ─── */
+    #about {
+      border-top: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .skills-block h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .skills-block h3:first-child { margin-top: 0; }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-pill {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.67rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      padding: 0.3rem 0.65rem;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    #contact h2 { margin-bottom: 0.5rem; }
+
+    #contact .section-intro {
+      margin: 0 auto 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-coords { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      nav ul { gap: 1.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .project-card, .card-cta::after { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-name">Ella <span>·</span> GIS</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ─── HERO ─── -->
+    <section id="hero">
+      <div>
+        <p class="hero-eyebrow">GIS · Remote Sensing · Spatial Analysis</p>
+        <h1>Mapping the world,<br /><em>one layer at a time.</em></h1>
+        <p class="hero-desc">
+          I'm a GIS analyst and scientist working at the intersection of remote sensing,
+          environmental hazard modelling, and spatial data communication.
+          Based in the Netherlands.
+        </p>
+        <div class="hero-links">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://github.com/yourusername" class="btn btn-ghost" target="_blank">GitHub</a>
+          <a href="your-cv.pdf" class="btn btn-ghost" target="_blank">Download CV</a>
+        </div>
+      </div>
+      <div class="hero-coords" aria-hidden="true">
+        52°N 5°E<br />
+        EPSG:4326<br />
+        ──────<br />
+        WGS 84
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects">
+      <p class="section-label">Selected work</p>
+      <h2>Projects</h2>
+      <p class="section-intro">
+        A selection of GIS analyses, remote sensing workflows, and interactive maps.
+        Click any card to view the full project.
+      </p>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1 – Python Analysis -->
+        <a href="https://github.com/yourusername/your-repo" class="project-card" target="_blank">
+          <span class="card-coord">52.3676° N, 4.9041° E</span>
+          <p class="card-type">Spatial Analysis · Python</p>
+          <h3 class="card-title">Your Python Analysis Project Title</h3>
+          <p class="card-desc">
+            Brief description of the analysis — what data you used, what the
+            question was, and what you found. Two to three sentences is plenty.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">GeoPandas</span>
+            <span class="tag">Shapely</span>
+            <span class="tag">Matplotlib</span>
+          </div>
+          <span class="card-cta">View on GitHub</span>
+        </a>
+
+        <!-- PROJECT 2 – StoryMap Suitability Analysis -->
+        <a href="https://storymaps.arcgis.com/stories/your-story-id" class="project-card" target="_blank">
+          <span class="card-coord">51.9244° N, 4.4777° E</span>
+          <p class="card-type">Suitability Analysis · ArcGIS StoryMap</p>
+          <h3 class="card-title">Your Suitability Analysis Title</h3>
+          <p class="card-desc">
+            A description of what the suitability analysis evaluated, what
+            spatial criteria were weighted, and where the work was applied.
+          </p>
+          <div class="card-tags">
+            <span class="tag">ArcGIS Pro</span>
+            <span class="tag">Multi-criteria</span>
+            <span class="tag">StoryMaps</span>
+            <span class="tag">Weighted Overlay</span>
+          </div>
+          <span class="card-cta">View StoryMap</span>
+        </a>
+
+        <!-- PROJECT 3 – Google Earth Engine -->
+        <a href="https://code.earthengine.google.com/your-script-id" class="project-card" target="_blank">
+          <span class="card-coord">24.4539° N, 54.3773° E</span>
+          <p class="card-type">Remote Sensing · Google Earth Engine</p>
+          <h3 class="card-title">Your GEE Project Title</h3>
+          <p class="card-desc">
+            Describe the satellite data source, the processing approach (e.g.
+            change detection, index calculation), and the geographic area or
+            phenomenon under study.
+          </p>
+          <div class="card-tags">
+            <span class="tag">GEE</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Sentinel-1</span>
+            <span class="tag">SAR</span>
+          </div>
+          <span class="card-cta">View Project</span>
+        </a>
+
+        <!-- PROJECT 4 – Placeholder -->
+        <div class="project-card card-placeholder">
+          <span class="card-coord">0.0000° N, 0.0000° E</span>
+          <p class="card-type">Coming soon</p>
+          <h3 class="card-title">Next Project</h3>
+          <p class="card-desc">
+            Another analysis, map, or report to be added here.
+          </p>
+          <div class="card-tags">
+            <span class="tag">TBD</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about">
+      <p class="section-label">Background</p>
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a GIS analyst and scientist with a background in [your field — e.g.
+            physical geography, environmental science]. I work with spatial data to
+            communicate complex environmental and geographic patterns clearly.
+          </p>
+          <p>
+            My work spans remote sensing, flood hazard modelling, suitability analysis,
+            and geospatial data pipelines. I'm particularly interested in using open
+            data and open-source tools to make spatial analysis more accessible.
+          </p>
+          <p>
+            Currently based in the Netherlands, working alongside
+            <a href="https://fasthazard.com" style="color:var(--amber); text-underline-offset:3px;">Fast Hazard</a>
+            on climatological risk modelling.
+          </p>
+        </div>
+        <div class="skills-block">
+          <h3>Software & Platforms</h3>
+          <div class="skills-list">
+            <span class="skill-pill">ArcGIS Pro</span>
+            <span class="skill-pill">QGIS</span>
+            <span class="skill-pill">Google Earth Engine</span>
+            <span class="skill-pill">ArcGIS Online</span>
+            <span class="skill-pill">StoryMaps</span>
+          </div>
+
+          <h3>Languages & Libraries</h3>
+          <div class="skills-list">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">GeoPandas</span>
+            <span class="skill-pill">Rasterio</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">R</span>
+          </div>
+
+          <h3>Methods</h3>
+          <div class="skills-list">
+            <span class="skill-pill">SAR Change Detection</span>
+            <span class="skill-pill">Suitability Analysis</span>
+            <span class="skill-pill">Flood Mapping</span>
+            <span class="skill-pill">Remote Sensing</span>
+            <span class="skill-pill">Spatial Statistics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact">
+      <p class="section-label">Get in touch</p>
+      <h2>Contact</h2>
+      <p class="section-intro">
+        Interested in collaborating or have questions about any of these projects?
+        I'm happy to hear from you.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:your@email.com" class="btn btn-primary">Email me</a>
+        <a href="https://linkedin.com/in/yourprofile" class="btn btn-ghost" target="_blank">LinkedIn</a>
+        <a href="https://github.com/yourusername" class="btn btn-ghost" target="_blank">GitHub</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Ella — GIS Portfolio</p>
+    <p>Built with GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
