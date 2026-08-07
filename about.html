@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Katherine van Roon</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header { padding: 5rem 0 3.5rem; }
+
+    /* Two-col about layout */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+
+    .about-body h3 {
+      font-size: 1rem;
+      color: var(--sage);
+      font-family: var(--font-mono);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 2.5rem 0 1rem;
+    }
+
+    /* Sidebar */
+    .about-sidebar {
+      position: sticky;
+      top: 80px;
+    }
+
+    /* Profile photo */
+    .profile-photo-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      background: var(--panel);
+    }
+
+    .profile-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .sidebar-link:hover { color: var(--sage); }
+    .sidebar-link::before { content: '↗'; font-size: 0.75rem; }
+
+    /* Skills sidebar */
+    .skill-group { margin-bottom: 1.5rem; }
+
+    .skill-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* Experience timeline */
+    .timeline { margin-top: 0.5rem; }
+
+    .timeline-entry {
+      position: relative;
+      padding-left: 1.5rem;
+      padding-bottom: 2rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .timeline-entry:last-child {
+      border-left: 1px dashed var(--border);
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--sage);
+      border: 2px solid var(--forest);
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-org {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Contact section */
+    #contact {
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-grid p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 780px) {
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-sidebar { position: static; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <span class="eyebrow">Background</span>
+      <h2>About me</h2>
+    </div>
+
+    <section style="padding-top: 0; border-top: none;">
+      <div class="about-layout">
+
+        <!-- Main bio -->
+        <div class="about-body">
+          <p>
+            I'm a climate hazard consultant and geo-data specialist working at the intersection
+            of flood risk modelling, anticipatory action, and disaster risk reduction.
+            My work is driven by a conviction that good spatial data — made accessible and
+            legible — is one of the most effective tools we have for protecting communities
+            before climate hazards become disasters.
+          </p>
+          <p>
+            I care deeply about two things that are often treated as separate: technical rigour
+            and genuine accessibility. Too much of the knowledge produced in climate science
+            stays locked behind academic language or expensive software. I try to build tools,
+            tutorials, and outputs that bridge that gap — so that communities, governments, and
+            humanitarian actors anywhere in the world can make informed decisions with data
+            that was built for them, not just about them.
+          </p>
+
+          <h3>Experience</h3>
+          <div class="timeline">
+
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2025 — Present</p>
+              <p class="timeline-role">Climate Hazard Consultant & Programmer</p>
+              <p class="timeline-org">Fast Hazard, Netherlands</p>
+              <p class="timeline-desc">
+                Specialised flood modelling, hazard assessments, and exposure analysis using the
+                FastFlood CLI tool. Led international projects from technical delivery through to
+                client management — including contract negotiations and CCN submissions. Designed and
+                launched the FastFlood Global tool and tutorial suite. Presented at EGU Vienna and
+                organised a tutorial session at the Canadian Symposium on Remote Sensing (Toronto).
+              </p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2024</p>
+              <p class="timeline-role">Thesis Research</p>
+              <p class="timeline-org">Fast Hazard — Brand & Marketing Strategy</p>
+              <p class="timeline-desc">
+                Primary research including a 100-response survey, internal interviews, competitor
+                benchmarking, and VRIO/McKinsey 7S framework analysis. Produced a brand guideline
+                as the professional deliverable.
+              </p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot" style="background: var(--border);"></div>
+              <p class="timeline-date">Earlier</p>
+              <p class="timeline-role">
+                <!-- Add your earlier education / roles here -->
+                [Your degree / earlier experience]
+              </p>
+              <p class="timeline-org">[Institution / organisation]</p>
+              <p class="timeline-desc">[Short description]</p>
+            </div>
+
+          </div>
+
+          <h3>Approach</h3>
+          <p>
+            I work across the full project lifecycle — from defining data requirements and
+            building processing pipelines, to producing deliverables and presenting findings
+            to non-technical stakeholders. I'm comfortable in the command line, in the field,
+            and in a client meeting.
+          </p>
+          <p>
+            My technical work centres on open-source tools and reproducible workflows.
+            I believe that if your method can't be explained, it probably shouldn't be trusted —
+            so transparency and documentation are non-negotiable parts of how I build.
+          </p>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="about-sidebar">
+
+          <!--
+            PROFILE PHOTO: Replace the div below with your actual photo.
+            Example: <img src="photos/profile.jpg" alt="Katherine van Roon" />
+            inside the .profile-photo-wrap div below.
+          -->
+          <div class="profile-photo-wrap photo-placeholder" style="aspect-ratio:3/4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PROFILE PHOTO</span>
+          </div>
+
+          <div class="sidebar-links">
+            <a href="CV_vanRoon.pdf" class="sidebar-link" target="_blank">Download CV</a>
+            <a href="https://www.linkedin.com/in/katherinevanroon/" class="sidebar-link" target="_blank">LinkedIn</a>
+            <a href="https://github.com/k-van-roon" class="sidebar-link" target="_blank">GitHub</a>
+            <a href="mailto:vanroonk.com" class="sidebar-link">Email</a>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Tools & Platforms</span>
+            <div class="skills-row">
+              <span class="skill-pill">QGIS</span>
+              <span class="skill-pill">ArcGIS Pro</span>
+              <span class="skill-pill">GEE</span>
+              <span class="skill-pill">FastFlood CLI</span>
+              <span class="skill-pill">StoryMaps</span>
+              <span class="skill-pill">ArcGIS Online</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Languages</span>
+            <div class="skills-row">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">R</span>
+              <span class="skill-pill">Bash</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Libraries</span>
+            <div class="skills-row">
+              <span class="skill-pill">GeoPandas</span>
+              <span class="skill-pill">Rasterio</span>
+              <span class="skill-pill">xarray</span>
+              <span class="skill-pill">NumPy</span>
+              <span class="skill-pill">Matplotlib</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Methods</span>
+            <div class="skills-row">
+              <span class="skill-pill">Flood Modelling</span>
+              <span class="skill-pill">SAR Change Detection</span>
+              <span class="skill-pill">Risk Assessment</span>
+              <span class="skill-pill">Suitability Analysis</span>
+              <span class="skill-pill">Anticipatory Action</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Languages (spoken)</span>
+            <div class="skills-row">
+              <span class="skill-pill">English</span>
+              <span class="skill-pill">Dutch</span>
+              <!-- Add others as relevant -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <p>
+          Interested in collaborating, discussing a project, or asking about my work?
+          I'm open to conversations about climate hazard consulting, GIS analysis,
+          and tool development.
+        </p>
+        <div class="contact-links-col">
+          <a href="mailto:vanroonk.com" class="btn btn-primary">Email me</a>
+          <a href="https://www.linkedin.com/in/katherinevanroon/" class="btn btn-ghost" target="_blank">LinkedIn</a>
+          <a href="https://github.com/k-van-roon" class="btn btn-ghost" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Katherine van Roon</p>
+    <p>
+      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:vanroonk.com">Email</a>
+    </p>
+  </footer>
+
+</body>
+</html>

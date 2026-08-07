@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Updates — Katherine van Roon</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header { padding: 5rem 0 3.5rem; }
+
+    /* Full-width update entries */
+    .updates-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .update-entry {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3.5rem;
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .update-entry:last-child { border-bottom: none; }
+
+    /* Left column */
+    .update-meta {
+      position: sticky;
+      top: 80px;
+    }
+
+    .update-meta-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .update-meta-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .update-meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* Right column */
+    .update-content {
+      max-width: 660px;
+    }
+
+    /* Photo block inside entry */
+    .update-photo {
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+      aspect-ratio: 16/9;
+      background: var(--panel);
+    }
+
+    .update-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .update-content p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .update-content strong {
+      color: var(--parchment);
+      font-weight: 500;
+    }
+
+    .update-content a {
+      color: var(--sage);
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 780px) {
+      .update-entry {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2.5rem 0;
+      }
+      .update-meta { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="updates.html" class="active">Updates</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <span class="eyebrow">Journal</span>
+      <h2>Updates</h2>
+      <p class="section-intro">
+        Notes on what I've been working on — conferences, launches, reflections, and
+        things I'm learning as I go.
+      </p>
+    </div>
+
+    <div class="updates-list">
+
+      <!-- ══════════════════════════════════
+           UPDATE 1 — EGU & CSRS, July 2026
+           ══════════════════════════════════ -->
+      <article class="update-entry" id="egu-csrs-2026">
+        <div class="update-meta">
+          <p class="update-meta-date">July 2026</p>
+          <h2 class="update-meta-title">Two conferences, two continents</h2>
+          <div class="update-meta-tags">
+            <span class="tag">EGU</span>
+            <span class="tag">CSRS</span>
+            <span class="tag">FastFlood</span>
+            <span class="tag">Remote Sensing</span>
+          </div>
+        </div>
+
+        <div class="update-content">
+          <!--
+            PHOTO: Replace the div below with an actual <img> tag.
+            Suggested: photo from your EGU poster session in Vienna, or a conference photo.
+            Example:
+            <div class="update-photo">
+              <img src="photos/egu-vienna-2026.jpg" alt="EGU Vienna 2026 — poster session" />
+            </div>
+          -->
+          <div class="update-photo photo-placeholder" style="aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PHOTO — EGU VIENNA / CSRS TORONTO</span>
+          </div>
+
+          <p>
+            This year brought two conference opportunities that I'm genuinely grateful for,
+            and that pushed my thinking in different directions.
+          </p>
+          <p>
+            The first was the <strong>European Geosciences Union General Assembly in Vienna</strong> —
+            an incredible week of sessions, conversations, and ideas. Beyond attending, I had
+            the opportunity to present work I've been developing at Fast Hazard: a
+            data-agnostic approach to applying the FastFlood model that is designed to perform
+            reliably anywhere in the world, including in data-sparse environments. The approach
+            prioritises speed and accuracy while remaining scalable and reproducible across
+            diverse hydrological contexts. The poster I presented explored how this methodology
+            was applied to case study locations across Canada under various input scenarios,
+            and discussed its potential for operational early warning and national-scale
+            risk assessment.
+          </p>
+          <p>
+            Later in the year, I attended the <strong>Canadian Symposium on Remote Sensing in Toronto</strong>.
+            We were invited to organise a tutorial on the FastFlood tool — which I was responsible
+            for creating. I designed a session that introduced the tool, explained the underlying
+            methodology, and walked participants through common applications in a hands-on way.
+            Accessibility and clarity were front of mind throughout: the goal was for practitioners
+            with varying levels of technical background to leave with something useable.
+          </p>
+          <p>
+            What I appreciated most about CSRS was the perspective shift it offered.
+            The conference approached the work I do from a strictly remote sensing angle —
+            less the intersection of hazard and vulnerability that I usually navigate, and more
+            the data and sensing side of the pipeline. I came away with concrete ideas about
+            what we might be able to integrate into the FastFlood Global tool, and how to
+            improve some of our internal workflows. A productive week in every sense.
+          </p>
+        </div>
+      </article>
+
+      <!-- ══════════════════════════════════
+           UPDATE 2 — One year at FH, March 2026
+           ══════════════════════════════════ -->
+      <article class="update-entry" id="one-year-fasthazard">
+        <div class="update-meta">
+          <p class="update-meta-date">March 2026</p>
+          <h2 class="update-meta-title">One year at Fast Hazard</h2>
+          <div class="update-meta-tags">
+            <span class="tag">Fast Hazard</span>
+            <span class="tag">Reflection</span>
+            <span class="tag">Consultancy</span>
+          </div>
+        </div>
+
+        <div class="update-content">
+          <!--
+            PHOTO: A photo from your work at Fast Hazard, or from a project deliverable.
+            Example:
+            <div class="update-photo">
+              <img src="photos/fasthazard-year.jpg" alt="One year at Fast Hazard" />
+            </div>
+          -->
+          <div class="update-photo photo-placeholder" style="aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PHOTO — FAST HAZARD WORK</span>
+          </div>
+
+          <p>
+            A year in, and it's been a genuinely formative one.
+          </p>
+          <p>
+            My title is officially <strong>Climate Hazard Consultant and Programmer</strong>, but working
+            at a small company means that description covers a lot of ground. The technical core
+            of my work — specialised flood modelling, hazard assessments, and exposure analysis
+            using the FastFlood CLI — is something I've refined into a solid internal workflow.
+            I feel confident in these deliverables now in a way I didn't at the start.
+          </p>
+          <p>
+            What surprised me most was how much I've grown on the non-technical side.
+            I've had the opportunity to <strong>lead projects</strong> — not just contribute to them —
+            which meant being responsible for both the team and the client relationship. Most
+            client interactions have been positive and genuinely collaborative, but there were
+            moments that tested my patience, and a few where I needed to be firm: re-negotiating
+            scope, holding to contract terms, or pushing back constructively on requests that
+            fell outside what was agreed. Those were uncomfortable moments at the time, but
+            they've been some of the most valuable experiences for building confidence in
+            professional settings.
+          </p>
+          <p>
+            I also got hands-on with the business development side of consultancy —
+            <strong>Request for Proposal (RFP) preparation</strong> and <strong>Contract Change Notice (CCN) submissions</strong>.
+            This is knowledge I couldn't have picked up on my own or at a larger organisation
+            where these functions are siloed. Having visibility into how a small consultancy
+            actually operates has been one of the unexpected highlights of this role.
+          </p>
+          <p>
+            Looking ahead, I'm taking on more responsibility for <strong>internal documentation and
+            organisational processes</strong> — making sure our workflows are clearly recorded, which
+            also supports longer-term goals like ISO security certification. I'm also looking
+            forward to getting deeper into the FastFlood API. More technical, more infrastructure-level
+            work — which feels like the right next stretch.
+          </p>
+        </div>
+      </article>
+
+      <!-- ══════════════════════════════════
+           UPDATE 3 — FastFlood Global, Nov 2025
+           ══════════════════════════════════ -->
+      <article class="update-entry" id="fastflood-global">
+        <div class="update-meta">
+          <p class="update-meta-date">November 2025</p>
+          <h2 class="update-meta-title">FastFlood Global goes live</h2>
+          <div class="update-meta-tags">
+            <span class="tag">FastFlood</span>
+            <span class="tag">Tool Design</span>
+            <span class="tag">Launch</span>
+          </div>
+        </div>
+
+        <div class="update-content">
+          <!--
+            PHOTO: A screenshot of the FastFlood Global tool interface, or a photo from
+            the launch / team working on it.
+            Example:
+            <div class="update-photo">
+              <img src="photos/fastflood-global.jpg" alt="FastFlood Global tool" />
+            </div>
+          -->
+          <div class="update-photo photo-placeholder" style="aspect-ratio:16/9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PHOTO — FASTFLOOD GLOBAL TOOL / SCREENSHOT</span>
+          </div>
+
+          <p>
+            After months of work, the <strong>FastFlood Global tool</strong> is live — and it's
+            genuinely exciting to see it out in the world.
+          </p>
+          <p>
+            I was involved from the early design and brainstorming stages through to
+            implementation and testing, which made this a rewarding project to see through
+            end-to-end. There were some genuinely tricky technical problems to solve along
+            the way, but working through those iteratively — trying things, seeing what broke,
+            integrating user feedback, and going around the loop again — is exactly the kind
+            of process I find energising.
+          </p>
+          <p>
+            One of the parts I'm most proud of is the <strong>tutorial material</strong> I designed for the tool.
+            This matters to me because accessibility is something I care about deeply — not just
+            as a principle, but as a design constraint. If a tool for anticipatory action is only
+            useable by a narrow technical audience, it isn't really serving its purpose. The
+            goal was to make FastFlood Global genuinely approachable for practitioners across
+            a range of backgrounds and contexts, so that communities and decision-makers anywhere
+            in the world can use it to support informed, timely action before a flood event.
+          </p>
+          <p>
+            This launch felt like a real milestone — both for the team and personally.
+            More to come.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Katherine van Roon</p>
+    <p>
+      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:vanroonk.com">Email</a>
+    </p>
+  </footer>
+
+</body>
+</html>

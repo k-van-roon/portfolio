@@ -3,641 +3,431 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Katherine van Roon's Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
+  <title>Katherine van Roon — GIS & Climate Hazard</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── Homepage-specific styles ── */
 
-    :root {
-      --navy:    #0d1b2a;
-      --slate:   #1a2d42;
-      --panel:   #152234;
-      --border:  #243750;
-      --amber:   #e8a838;
-      --amber-dim: rgba(232, 168, 56, 0.12);
-      --text:    #d4dde8;
-      --muted:   #6b85a0;
-      --white:   #f0f5fa;
-      --tag-bg:  #1e3347;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background-color: var(--navy);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    /* subtle contour line background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 79px,
-          rgba(255,255,255,0.018) 80px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 79px,
-          rgba(255,255,255,0.018) 80px
-        );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13, 27, 42, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      height: 60px;
-    }
-
-    .nav-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--white);
-      letter-spacing: 0.01em;
-    }
-
-    .nav-name span {
-      color: var(--amber);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav ul a {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    nav ul a:hover { color: var(--amber); }
-
-    /* ─── LAYOUT ─── */
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 clamp(1.5rem, 5vw, 3rem);
-    }
-
-    section { padding: 5rem 0; }
-
-    /* ─── HERO ─── */
+    /* Hero */
     #hero {
-      padding: 7rem 0 5rem;
+      padding: 7rem 0 5.5rem;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: end;
-      border-bottom: 1px solid var(--border);
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
 
-    .hero-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--amber);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
+    .hero-coords {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--border);
+      line-height: 2;
+      text-align: right;
     }
 
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-    }
-
-    h1 em {
-      font-style: normal;
-      color: var(--amber);
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
+    .hero-subtitle {
+      font-size: 1rem;
       color: var(--muted);
-      max-width: 520px;
-      line-height: 1.75;
-      margin-bottom: 2rem;
+      max-width: 480px;
+      line-height: 1.8;
+      margin: 1.5rem 0 2rem;
     }
 
     .hero-links {
       display: flex;
-      gap: 1rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
     }
 
-    .btn {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.65rem 1.4rem;
-      border-radius: 3px;
-      transition: all 0.2s;
+    /* Hero terrain divider — the signature: a hand-drawn elevation profile SVG */
+    .terrain-divider {
+      width: 100%;
+      height: 48px;
+      margin: 0;
+      display: block;
+      opacity: 0.35;
     }
 
-    .btn-primary {
-      background: var(--amber);
-      color: var(--navy);
-      font-weight: 700;
-    }
-
-    .btn-primary:hover { background: #f0b94a; }
-
-    .btn-ghost {
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-
-    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
-
-    .hero-coords {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--border);
-      text-align: right;
-      line-height: 1.9;
-    }
-
-    /* ─── SECTION HEADINGS ─── */
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--amber);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.01em;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 560px;
-      margin-bottom: 3rem;
-      font-size: 0.97rem;
-    }
-
-    /* ─── PROJECT GRID ─── */
-    .projects-grid {
+    /* Homepage project preview (3 cards) */
+    .projects-preview {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
     }
 
-    .project-card {
+    /* Homepage about strip */
+    .about-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-strip p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .about-strip-skills {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .skill-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* Homepage updates preview */
+    .updates-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .update-snapshot {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.75rem;
-      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
       text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
-      overflow: hidden;
     }
 
-    .project-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--amber-dim), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .project-card:hover {
-      border-color: var(--amber);
+    .update-snapshot:hover {
+      border-color: var(--sage);
       transform: translateY(-3px);
     }
 
-    .project-card:hover::before { opacity: 1; }
+    .update-snapshot-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: var(--canopy);
+    }
 
-    /* coordinate annotation — the signature element */
-    .card-coord {
-      position: absolute;
-      top: 0.85rem;
-      right: 0.9rem;
-      font-family: 'Space Mono', monospace;
+    .update-snapshot-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .update-date {
+      font-family: var(--font-mono);
       font-size: 0.62rem;
-      color: var(--border);
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
-    }
-
-    .project-card:hover .card-coord { color: rgba(232,168,56,0.45); }
-
-    .card-type {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--amber);
-      letter-spacing: 0.12em;
+      color: var(--sage);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.6rem;
     }
 
-    .card-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.35;
-      margin-bottom: 0.65rem;
+    .update-snapshot h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .card-desc {
-      font-size: 0.9rem;
+    .update-snapshot p {
+      font-size: 0.88rem;
       color: var(--muted);
       line-height: 1.65;
       flex: 1;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .tag {
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      padding: 0.2rem 0.55rem;
-      border-radius: 2px;
-    }
-
-    .card-cta {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--amber);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: auto;
-    }
-
-    .card-cta::after {
-      content: '→';
-      transition: transform 0.2s;
-    }
-
-    .project-card:hover .card-cta::after { transform: translateX(4px); }
-
-    /* placeholder card */
-    .card-placeholder {
-      border-style: dashed;
-      border-color: var(--border);
-      opacity: 0.5;
-      cursor: default;
-    }
-
-    .card-placeholder:hover {
-      border-color: var(--border);
-      transform: none;
-    }
-
-    .card-placeholder::before { display: none; }
-
-    /* ─── ABOUT ─── */
-    #about {
-      border-top: 1px solid var(--border);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      font-size: 0.97rem;
-      line-height: 1.8;
       margin-bottom: 1rem;
     }
 
-    .skills-block h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 0.75rem;
-      margin-top: 1.75rem;
+    .update-cta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
     }
 
-    .skills-block h3:first-child { margin-top: 0; }
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .skill-pill {
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.67rem;
-      letter-spacing: 0.05em;
-      color: var(--text);
-      padding: 0.3rem 0.65rem;
-    }
-
-    /* ─── CONTACT ─── */
-    #contact {
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-
-    #contact h2 { margin-bottom: 0.5rem; }
-
-    #contact .section-intro {
-      margin: 0 auto 2rem;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    footer p {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 700px) {
-      #hero { grid-template-columns: 1fr; }
+    @media (max-width: 780px) {
+      #hero { grid-template-columns: 1fr; gap: 2rem; }
       .hero-coords { display: none; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      nav ul { gap: 1.2rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .project-card, .card-cta::after { transition: none; }
+      .about-strip { grid-template-columns: 1fr; gap: 2rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="nav-name">Katherine <span>·</span> GIS</div>
+    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
     <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
     </ul>
   </nav>
 
   <main>
 
-    <!-- ─── HERO ─── -->
-    <section id="hero">
+    <!-- ═══ HERO ═══ -->
+    <section id="hero" style="border-top: none;">
       <div>
-        <p class="hero-eyebrow">GIS · Remote Sensing · Spatial Analysis</p>
-        <h1>Mapping the world,<br /><em>one layer at a time.</em></h1>
-        <p class="hero-desc">
-          I'm a GIS analyst and scientist working at the intersection of remote sensing,
-          environmental hazard modelling, and spatial data communication.
-          Based in the Netherlands.
+        <span class="eyebrow">Climate Hazard · Remote Sensing · GIS</span>
+        <h1>From satellite<br /><em>to street level.</em></h1>
+        <p class="hero-subtitle">
+          I build spatial tools and analysis that translate complex climate hazard data
+          into decisions communities can act on — before disaster strikes.
         </p>
         <div class="hero-links">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="https://github.com/yourusername" class="btn btn-ghost" target="_blank">GitHub</a>
+          <a href="projects.html" class="btn btn-primary">View Projects</a>
+          <a href="about.html" class="btn btn-ghost">About me</a>
           <a href="CV_vanRoon.pdf" class="btn btn-ghost" target="_blank">Download CV</a>
         </div>
       </div>
+
+      <!-- Coordinates annotation -->
       <div class="hero-coords" aria-hidden="true">
-        52°N 5°E<br />
-        EPSG:4326<br />
-        ──────<br />
-        WGS 84
+        15°18′N · 61°23′W<br/>
+        Dominica, Lesser Antilles<br/>
+        ───────────<br/>
+        52°13′N · 5°58′E<br/>
+        Apeldoorn, NL<br/>
+        ───────────<br/>
+        EPSG:4326 · WGS84
       </div>
     </section>
 
-    <!-- ─── PROJECTS ─── -->
-    <section id="projects">
-      <p class="section-label">Selected work</p>
+    <!-- Terrain divider -->
+    <svg class="terrain-divider" viewBox="0 0 1100 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polyline points="0,40 80,38 140,30 200,35 260,20 310,28 360,12 400,22 440,8 480,18 520,25 560,10 600,20 640,30 680,18 730,28 780,15 830,25 880,32 940,22 1000,35 1060,28 1100,32" fill="none" stroke="#5cb88a" stroke-width="1.2"/>
+      <polyline points="0,44 80,43 140,37 200,41 260,28 310,35 360,20 400,30 440,15 480,26 520,33 560,18 600,28 640,38 680,26 730,36 780,23 830,33 880,40 940,30 1000,42 1060,36 1100,40" fill="none" stroke="#5cb88a" stroke-width="0.6" opacity="0.5"/>
+    </svg>
+
+    <!-- ═══ PROJECTS PREVIEW ═══ -->
+    <section id="projects-preview">
+      <span class="eyebrow">Selected work</span>
       <h2>Projects</h2>
       <p class="section-intro">
-        A selection of GIS analyses, remote sensing workflows, and interactive maps.
-        Click any card to view the full project.
+        A selection of flood risk analyses, remote sensing workflows, and climate resilience tools.
       </p>
 
-      <div class="projects-grid">
+      <div class="projects-preview">
 
-        <!-- PROJECT 1 – Python Analysis -->
-        <a href="https://github.com/yourusername/your-repo" class="project-card" target="_blank">
-          <span class="card-coord">52.3676° N, 4.9041° E</span>
-          <p class="card-type">Spatial Analysis · Python</p>
-          <h3 class="card-title">Your Python Analysis Project Title</h3>
+        <a href="#" class="card" target="_blank">
+          <!-- REPLACE href with your actual project link -->
+          <span class="card-coord">15.30°N · 61.39°W</span>
+          <p class="card-type">Risk Assessment · StoryMap</p>
+          <h3>Compound Flood Risk — Dominica</h3>
           <p class="card-desc">
-            Brief description of the analysis — what data you used, what the
-            question was, and what you found. Two to three sentences is plenty.
+            Multi-layer compound flood risk index for the island of Dominica, combining
+            coastal storm surge exposure, pluvial flash flood susceptibility, and social
+            vulnerability using the UNDRR Hazard × Exposure × Vulnerability framework.
           </p>
           <div class="card-tags">
+            <span class="tag">QGIS</span>
             <span class="tag">Python</span>
-            <span class="tag">GeoPandas</span>
-            <span class="tag">Shapely</span>
-            <span class="tag">Matplotlib</span>
-          </div>
-          <span class="card-cta">View on GitHub</span>
-        </a>
-
-        <!-- PROJECT 2 – StoryMap Suitability Analysis -->
-        <a href="https://storymaps.arcgis.com/stories/your-story-id" class="project-card" target="_blank">
-          <span class="card-coord">51.9244° N, 4.4777° E</span>
-          <p class="card-type">Suitability Analysis · ArcGIS StoryMap</p>
-          <h3 class="card-title">Your Suitability Analysis Title</h3>
-          <p class="card-desc">
-            A description of what the suitability analysis evaluated, what
-            spatial criteria were weighted, and where the work was applied.
-          </p>
-          <div class="card-tags">
-            <span class="tag">ArcGIS Pro</span>
-            <span class="tag">Multi-criteria</span>
+            <span class="tag">CHIRPS</span>
+            <span class="tag">FABDEM</span>
             <span class="tag">StoryMaps</span>
-            <span class="tag">Weighted Overlay</span>
           </div>
           <span class="card-cta">View StoryMap</span>
         </a>
 
-        <!-- PROJECT 3 – Google Earth Engine -->
-        <a href="https://code.earthengine.google.com/your-script-id" class="project-card" target="_blank">
-          <span class="card-coord">24.4539° N, 54.3773° E</span>
+        <a href="#" class="card" target="_blank">
+          <!-- REPLACE href with your GEE script link -->
+          <span class="card-coord">25.20°N · 55.27°E</span>
           <p class="card-type">Remote Sensing · Google Earth Engine</p>
-          <h3 class="card-title">Your GEE Project Title</h3>
+          <h3>SAR Flood Extent Mapping — UAE</h3>
           <p class="card-desc">
-            Describe the satellite data source, the processing approach (e.g.
-            change detection, index calculation), and the geographic area or
-            phenomenon under study.
+            Sentinel-1 SAR change detection pipeline mapping flood extent across Al Ain
+            and Dubai following the April 2024 extreme rainfall event. Calibrated
+            against optical imagery and operational thresholds.
           </p>
           <div class="card-tags">
             <span class="tag">GEE</span>
-            <span class="tag">JavaScript</span>
             <span class="tag">Sentinel-1</span>
             <span class="tag">SAR</span>
+            <span class="tag">Change Detection</span>
           </div>
           <span class="card-cta">View Project</span>
         </a>
 
-        <!-- PROJECT 4 – Placeholder -->
-        <div class="project-card card-placeholder">
-          <span class="card-coord">0.0000° N, 0.0000° E</span>
-          <p class="card-type">Coming soon</p>
-          <h3 class="card-title">Next Project</h3>
+        <a href="#" class="card" target="_blank">
+          <!-- REPLACE href with your GitHub repo link -->
+          <span class="card-coord">Variable AOI</span>
+          <p class="card-type">Spatial Analysis · Python</p>
+          <h3>Flood Risk Composite Scoring Tool</h3>
           <p class="card-desc">
-            Another analysis, map, or report to be added here.
+            A reusable Python pipeline for normalising, weighting, and combining
+            multi-source raster inputs into a composite risk index. Designed for
+            reproducibility across diverse hydrological and geographic contexts.
           </p>
           <div class="card-tags">
-            <span class="tag">TBD</span>
+            <span class="tag">Python</span>
+            <span class="tag">Rasterio</span>
+            <span class="tag">GeoPandas</span>
+            <span class="tag">NumPy</span>
           </div>
-        </div>
+          <span class="card-cta">View on GitHub</span>
+        </a>
 
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="projects.html" class="btn btn-ghost">All projects →</a>
       </div>
     </section>
 
-    <!-- ─── ABOUT ─── -->
-    <section id="about">
-      <p class="section-label">Background</p>
+    <!-- ═══ ABOUT STRIP ═══ -->
+    <section id="about-strip">
+      <span class="eyebrow">Background</span>
       <h2>About</h2>
-      <div class="about-grid">
-        <div class="about-text">
+      <div class="about-strip">
+        <div>
           <p>
-            I'm a GIS analyst and scientist with a background in [your field — e.g.
-            physical geography, environmental science]. I work with spatial data to
-            communicate complex environmental and geographic patterns clearly.
+            I'm a climate hazard consultant and geo-data specialist based in the Netherlands,
+            working at the intersection of flood risk modelling, anticipatory action, and
+            disaster risk reduction.
           </p>
           <p>
-            My work spans remote sensing, flood hazard modelling, suitability analysis,
-            and geospatial data pipelines. I'm particularly interested in using open
-            data and open-source tools to make spatial analysis more accessible.
+            At <a href="https://fasthazard.com" style="color:var(--sage); text-underline-offset:3px;">Fast Hazard</a>,
+            I design scalable flood modelling workflows and help translate dense technical
+            outputs into tools and products that real decision-makers can act on — from
+            national risk assessments to community-level early warning systems.
           </p>
-          <p>
-            Currently based in the Netherlands, working alongside
-            <a href="https://fasthazard.com" style="color:var(--amber); text-underline-offset:3px;">Fast Hazard</a>
-            on climatological risk modelling.
-          </p>
+          <div style="margin-top: 1.5rem;">
+            <a href="about.html" class="btn btn-ghost">Full profile →</a>
+          </div>
         </div>
-        <div class="skills-block">
-          <h3>Software & Platforms</h3>
-          <div class="skills-list">
-            <span class="skill-pill">ArcGIS Pro</span>
-            <span class="skill-pill">QGIS</span>
-            <span class="skill-pill">Google Earth Engine</span>
-            <span class="skill-pill">ArcGIS Online</span>
-            <span class="skill-pill">StoryMaps</span>
-          </div>
 
-          <h3>Languages & Libraries</h3>
-          <div class="skills-list">
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">GeoPandas</span>
-            <span class="skill-pill">Rasterio</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">R</span>
+        <div class="about-strip-skills">
+          <div>
+            <p class="skill-group-label">Tools & Platforms</p>
+            <div class="skills-row">
+              <span class="skill-pill">QGIS</span>
+              <span class="skill-pill">ArcGIS Pro</span>
+              <span class="skill-pill">Google Earth Engine</span>
+              <span class="skill-pill">FastFlood CLI</span>
+              <span class="skill-pill">StoryMaps</span>
+            </div>
           </div>
-
-          <h3>Methods</h3>
-          <div class="skills-list">
-            <span class="skill-pill">SAR Change Detection</span>
-            <span class="skill-pill">Suitability Analysis</span>
-            <span class="skill-pill">Flood Mapping</span>
-            <span class="skill-pill">Remote Sensing</span>
-            <span class="skill-pill">Spatial Statistics</span>
+          <div>
+            <p class="skill-group-label">Languages & Libraries</p>
+            <div class="skills-row">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">GeoPandas</span>
+              <span class="skill-pill">Rasterio</span>
+              <span class="skill-pill">JavaScript (GEE)</span>
+            </div>
+          </div>
+          <div>
+            <p class="skill-group-label">Methods</p>
+            <div class="skills-row">
+              <span class="skill-pill">Flood Modelling</span>
+              <span class="skill-pill">SAR Change Detection</span>
+              <span class="skill-pill">Risk Assessment</span>
+              <span class="skill-pill">Anticipatory Action</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ─── CONTACT ─── -->
-    <section id="contact">
-      <p class="section-label">Get in touch</p>
-      <h2>Contact</h2>
+    <!-- ═══ UPDATES PREVIEW ═══ -->
+    <section id="updates-preview">
+      <span class="eyebrow">Latest</span>
+      <h2>Updates</h2>
       <p class="section-intro">
-        Interested in collaborating or have questions about any of these projects?
-        I'm happy to hear from you.
+        Notes from the field — conferences, projects, and things I'm learning.
       </p>
-      <div class="contact-links">
-        <a href="mailto:vanroonk.com" class="btn btn-primary">Email me</a>
-        <a href="https://www.linkedin.com/in/katherinevanroon/" class="btn btn-ghost" target="_blank">LinkedIn</a>
-        <a href="https://github.com/k-van-roon" class="btn btn-ghost" target="_blank">GitHub</a>
+
+      <div class="updates-preview">
+
+        <!-- UPDATE SNAPSHOT 1 -->
+        <a href="updates.html#egu-csrs-2026" class="update-snapshot">
+          <!--
+            PHOTO: Replace the div below with an actual <img> tag when you have a photo.
+            Suggested: a photo from EGU Vienna or the CSRS conference.
+            Example: <img src="photos/egu-2026.jpg" alt="EGU Vienna 2026" class="update-snapshot-img" />
+          -->
+          <div class="update-snapshot-img photo-placeholder" style="height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PHOTO — EGU / CSRS 2026</span>
+          </div>
+          <div class="update-snapshot-body">
+            <p class="update-date">July 2026</p>
+            <h3>Two conferences, two continents</h3>
+            <p>Presented a data-agnostic FastFlood approach at EGU Vienna, then organised a tutorial session at the Canadian Symposium on Remote Sensing in Toronto.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+        <!-- UPDATE SNAPSHOT 2 -->
+        <a href="updates.html#one-year-fasthazard" class="update-snapshot">
+          <!--
+            PHOTO: A photo from your work at Fast Hazard, or from a project deliverable.
+            Example: <img src="photos/fasthazard-year.jpg" alt="One year at Fast Hazard" class="update-snapshot-img" />
+          -->
+          <div class="update-snapshot-img photo-placeholder" style="height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PHOTO — FAST HAZARD / WORK</span>
+          </div>
+          <div class="update-snapshot-body">
+            <p class="update-date">March 2026</p>
+            <h3>One year at Fast Hazard</h3>
+            <p>Reflecting on a year of flood modelling, project leadership, and learning the business side of climate consultancy — from deliverables to contract negotiations.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+        <!-- UPDATE SNAPSHOT 3 -->
+        <a href="updates.html#fastflood-global" class="update-snapshot">
+          <!--
+            PHOTO: A screenshot or photo related to the FastFlood Global tool launch.
+            Example: <img src="photos/fastflood-global.jpg" alt="FastFlood Global launch" class="update-snapshot-img" />
+          -->
+          <div class="update-snapshot-img photo-placeholder" style="height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PHOTO — FASTFLOOD GLOBAL TOOL</span>
+          </div>
+          <div class="update-snapshot-body">
+            <p class="update-date">November 2025</p>
+            <h3>FastFlood Global goes live</h3>
+            <p>After months of design, iteration, and user testing, the FastFlood Global tool launched. I was involved in the tool architecture, tutorial material, and the feedback cycle.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="updates.html" class="btn btn-ghost">All updates →</a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>© 2026 Katherine van Roon Portfolio</p>
+    <p>© 2026 Katherine van Roon</p>
+    <p>
+      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:vanroonk.com">Email</a>
+    </p>
   </footer>
 
 </body>

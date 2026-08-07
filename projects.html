@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Katherine van Roon</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-header {
+      padding: 5rem 0 3.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 5rem;
+    }
+
+    /* Category filter row */
+    .filter-row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    .category-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 2.5rem 0 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
+    <ul>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <span class="eyebrow">Portfolio</span>
+      <h2>Projects</h2>
+      <p class="section-intro">
+        GIS analyses, remote sensing workflows, risk assessments, and spatial tools —
+        built across flood hazard, climate resilience, and disaster risk reduction.
+      </p>
+
+      <div class="filter-row">
+        <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+        <button class="filter-btn" onclick="filterCards('storymap', this)">StoryMap</button>
+        <button class="filter-btn" onclick="filterCards('gee', this)">GEE</button>
+        <button class="filter-btn" onclick="filterCards('python', this)">Python</button>
+        <button class="filter-btn" onclick="filterCards('risk', this)">Risk Assessment</button>
+      </div>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- ── FLOOD RISK / STORYMAP ── -->
+      <a href="#" class="card" target="_blank" data-tags="storymap risk">
+        <span class="card-coord">15.30°N · 61.39°W</span>
+        <p class="card-type">Risk Assessment · StoryMap</p>
+        <h3>Compound Flood Risk — Dominica</h3>
+        <p class="card-desc">
+          Multi-layer compound flood risk index for Dominica combining coastal storm surge
+          exposure, pluvial flash flood susceptibility, and social vulnerability under the
+          UNDRR Hazard × Exposure × Vulnerability framework. Designed to support
+          anticipatory action in a high-risk SIDS context.
+        </p>
+        <div class="card-tags">
+          <span class="tag">QGIS</span>
+          <span class="tag">Python</span>
+          <span class="tag">CHIRPS</span>
+          <span class="tag">FABDEM</span>
+          <span class="tag">WorldPop</span>
+          <span class="tag">StoryMaps</span>
+        </div>
+        <span class="card-cta">View StoryMap</span>
+      </a>
+
+      <!-- ── SAR / GEE ── -->
+      <a href="#" class="card" target="_blank" data-tags="gee risk">
+        <span class="card-coord">25.20°N · 55.27°E</span>
+        <p class="card-type">Remote Sensing · Google Earth Engine</p>
+        <h3>SAR Flood Extent Mapping — UAE</h3>
+        <p class="card-desc">
+          Sentinel-1 SAR change detection pipeline mapping flood extent across Al Ain
+          and Dubai following the April 2024 extreme rainfall event. Calibrated against
+          optical imagery with adaptive thresholding.
+        </p>
+        <div class="card-tags">
+          <span class="tag">GEE</span>
+          <span class="tag">Sentinel-1</span>
+          <span class="tag">SAR</span>
+          <span class="tag">Change Detection</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <span class="card-cta">View Project</span>
+      </a>
+
+      <!-- ── PYTHON TOOL ── -->
+      <a href="#" class="card" target="_blank" data-tags="python risk">
+        <span class="card-coord">Variable AOI</span>
+        <p class="card-type">Spatial Analysis · Python</p>
+        <h3>Flood Risk Composite Scoring Tool</h3>
+        <p class="card-desc">
+          A reusable, documented Python pipeline for normalising, weighting, and combining
+          multi-source raster inputs into a composite risk index. Designed for
+          reproducibility across diverse hydrological contexts and sparse-data environments.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Rasterio</span>
+          <span class="tag">GeoPandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+        <span class="card-cta">View on GitHub</span>
+      </a>
+
+      <!-- ── NDVI / GEE ── -->
+      <a href="#" class="card" target="_blank" data-tags="gee">
+        <span class="card-coord">15.30°N · 61.39°W</span>
+        <p class="card-type">Remote Sensing · Google Earth Engine</p>
+        <h3>Post-Hurricane Vegetation Loss — Dominica</h3>
+        <p class="card-desc">
+          Pre- and post-Hurricane Maria NDVI comparison using Landsat 8 imagery to map
+          statistically significant vegetation loss and co-locate areas of likely
+          landslide disturbance across Dominica's steep terrain.
+        </p>
+        <div class="card-tags">
+          <span class="tag">GEE</span>
+          <span class="tag">Landsat 8</span>
+          <span class="tag">NDVI</span>
+          <span class="tag">Change Detection</span>
+        </div>
+        <span class="card-cta">View Project</span>
+      </a>
+
+      <!-- ── PYTHON / CHIRPS ── -->
+      <a href="#" class="card" target="_blank" data-tags="python">
+        <span class="card-coord">15.30°N · 61.39°W</span>
+        <p class="card-type">Climate Data · Python</p>
+        <h3>CHIRPS Extreme Rainfall Analysis</h3>
+        <p class="card-desc">
+          Extraction and analysis of CHIRPS daily rainfall time series for Dominica.
+          Computes 90th, 95th, and 99th percentile thresholds and maps return periods
+          for use as the rainfall hazard input in the compound flood risk model.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">xarray</span>
+          <span class="tag">Rasterio</span>
+          <span class="tag">CHIRPS</span>
+          <span class="tag">Matplotlib</span>
+        </div>
+        <span class="card-cta">View on GitHub</span>
+      </a>
+
+      <!-- PLACEHOLDER -->
+      <div class="card card-placeholder" data-tags="all">
+        <span class="card-coord">0.00°N · 0.00°E</span>
+        <p class="card-type">Coming soon</p>
+        <h3>Next Project</h3>
+        <p class="card-desc">Another analysis or tool to be added here.</p>
+        <div class="card-tags"><span class="tag">TBD</span></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Katherine van Roon</p>
+    <p>
+      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:vanroonk.com">Email</a>
+    </p>
+  </footer>
+
+  <script>
+    function filterCards(tag, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#projects-grid .card').forEach(card => {
+        const tags = card.dataset.tags || '';
+        card.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
