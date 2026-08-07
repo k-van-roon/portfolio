@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
    Katherine van Roon — GIS Portfolio
-   Palette: Deep forest / slate greens + warm offwhite
+   Palette: Deep navy-teal + CV blue (#2596be) accent + warm offwhite
    Fonts: Fraunces (display) · Inter (body) · Space Mono (data/labels)
    Signature: Contour elevation lines as decorative texture,
               terrain-profile dividers between sections
@@ -11,18 +11,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Palette */
-  --forest:      #0f1f17;   /* page background — deep forest floor */
-  --canopy:      #162a1e;   /* section bg variant */
-  --panel:       #1c3326;   /* card / panel bg */
-  --border:      #2a4a35;   /* borders */
-  --sage:        #5cb88a;   /* primary accent — lichen green */
-  --sage-dim:    rgba(92, 184, 138, 0.10);
-  --sage-mid:    rgba(92, 184, 138, 0.25);
-  --parchment:   #e8e0d0;   /* body text — warm, not stark white */
-  --muted:       #7a9e8a;   /* secondary text */
-  --white:       #f5f2eb;   /* headings */
-  --tag-bg:      #1a2f22;
+  /* Palette — deep navy-teal + CV blue accent */
+  --forest:      #0b1a24;   /* page background — deep ocean floor */
+  --canopy:      #101f2e;   /* section bg variant */
+  --panel:       #152535;   /* card / panel bg */
+  --border:      #1f3a50;   /* borders */
+  --sage:        #2596be;   /* primary accent — CV blue */
+  --sage-dim:    rgba(37, 150, 190, 0.10);
+  --sage-mid:    rgba(37, 150, 190, 0.25);
+  --parchment:   #dde6ed;   /* body text — cool offwhite */
+  --muted:       #6a8fa8;   /* secondary text */
+  --white:       #eef4f8;   /* headings */
+  --tag-bg:      #111e2b;
 
   /* Type scale */
   --font-display: 'Fraunces', Georgia, serif;
@@ -51,14 +51,14 @@ body::before {
       170deg,
       transparent,
       transparent 38px,
-      rgba(92,184,138,0.028) 39px,
+      rgba(37,150,190,0.028) 39px,
       transparent 40px
     ),
     repeating-linear-gradient(
       170deg,
       transparent,
       transparent 68px,
-      rgba(92,184,138,0.018) 69px,
+      rgba(37,150,190,0.018) 69px,
       transparent 70px
     );
   pointer-events: none;
