@@ -154,6 +154,70 @@
       line-height: 1.7;
     }
 
+    /* Photo galleries (clickable, used throughout the bio + outside-of-work section) */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .photo-gallery.gallery-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+
+    .gallery-item img:hover {
+      opacity: 0.88;
+    }
+
+    .gallery-caption {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-top: -1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Outside of work section */
+    #outside-work {
+      border-top: 1px solid var(--border);
+    }
+
+    .hobby-block {
+      margin-bottom: 2.5rem;
+    }
+
+    .hobby-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .hobby-block h4 {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
     /* Contact section */
     #contact {
       border-top: 1px solid var(--border);
@@ -179,10 +243,56 @@
       gap: 0.75rem;
     }
 
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 10, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2.5rem;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.75rem;
+      right: 2rem;
+      color: var(--parchment);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      border-radius: 3px;
+      background: transparent;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
     @media (max-width: 780px) {
       .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-sidebar { position: static; }
       .contact-grid { grid-template-columns: 1fr; }
+      .photo-gallery.gallery-2 { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -209,26 +319,55 @@
 
         <!-- Main bio -->
         <div class="about-body">
+
           <p>
-            I'm a climate hazard consultant and geo-data specialist with expertise in flood risk
-            modelling, anticipatory action, and disaster risk reduction. I've delivered operational
-            flood analysis and information products for government and humanitarian clients across
-            Canada, the Caribbean, and the Mediterranean — from near-real-time emergency response
-            to long-term national risk assessment.
+            I grew up in Chicago, in the United States, to Dutch and American parents — though
+            my Dutch father grew up in South America, so we were a culturally confused family.
+            (It's also the reason my Spanish is very good!) One of my parents worked for an
+            airline while I was growing up, which meant a lot of travelling, especially back
+            to the Netherlands, which we made sure to visit every year.
           </p>
+
+          <div class="photo-gallery gallery-2">
+            <div class="gallery-item"><img src="photos/chicago.jpg" alt="Chicago skyline" /></div>
+            <div class="gallery-item"><img src="photos/kath_NL_2008.jpg" alt="Young Katherine in the Netherlands, 2008" /></div>
+          </div>
+
           <p>
-            My MSc research at the University of Twente focused on integrating probabilistic weather
-            forecasting into flood early warning systems for Dominica — a small island developing
-            state acutely exposed to tropical cyclones and flash flooding. That work sits at the
-            heart of what drives me: getting the right information to the right people before a
-            hazard becomes a disaster.
+            I always loved the Netherlands — getting to visit family, and just being there —
+            so when it came time to choose a university, I decided to move and start my BSc
+            at the University of Twente, at the Honours College. I had a great time at ATLAS,
+            getting to explore all sorts of topics, from civil engineering to earth observation
+            to natural hazards. It was during my bachelor's that I realised how much I liked
+            studying natural hazards specifically, which led me to Spatial Engineering for my
+            master's — also at Twente, but this time at the Faculty of Geo-Information Science
+            and Earth Observation (ITC). That faculty let me combine the technical side of the
+            work, remote sensing and spatial analysis, with the Natural Hazards and Disaster
+            Risk Reduction working group.
           </p>
+
           <p>
-            I care about two things that are often treated as separate: technical rigour and
-            genuine accessibility. Too much climate science stays locked behind academic language
-            or expensive proprietary tools. I build workflows, tutorials, and products designed
-            to bridge that gap — so that practitioners and communities anywhere in the world can
-            act on spatial data that was made for them, not just about them.
+            That turned out to be a great decision. Not only did I learn a lot, but I also got
+            a once-in-a-lifetime opportunity for my master's thesis: hands-on fieldwork on the
+            island of <strong>Dominica</strong>. Dominica is a Small Island Developing State with
+            a long history of devastating flooding and hurricane damage, and a strong national
+            push to become more climate resilient — a perfect fit for my research. While I was
+            there, I took in-field measurements to improve my flood model and spoke directly
+            with local officials to help design a more specialised solution for their situation.
+          </p>
+
+          <div class="photo-gallery">
+            <div class="gallery-item"><img src="photos/dominica_jungle.jpg" alt="Fieldwork in the Dominican jungle" /></div>
+            <div class="gallery-item"><img src="photos/fieldwork_measurements.jpg" alt="Taking measurements of the river course" /></div>
+            <div class="gallery-item"><img src="photos/commonwealth.jpg" alt="Visit to the Commonwealth of Dominica" /></div>
+            <div class="gallery-item"><img src="photos/disaster_management.jpg" alt="Visit to the Office of Disaster Management" /></div>
+          </div>
+
+          <p>
+            I also spent six months at <strong>Deltares</strong> as part of my MSc, which meant
+            getting to live in Delft and meet a new team — and funnily enough, my work now
+            crosses paths quite often with my old group there. After finishing my MSc, I started
+            at <strong>Fast Hazard</strong>, where I still am today.
           </p>
 
           <h3>Experience</h3>
@@ -248,7 +387,7 @@
                 and exposure analysis during active events. Contributed to FastFlood API and
                 software development (Python, Svelte), and led the design and launch of the
                 FastFlood Global tool and tutorial suite. Presented at EGU Vienna and organised a
-                tutorial session at the Canadian Symposium on Remote Sensing (Toronto).
+                tutorial session at ISPRS (Toronto).
               </p>
             </div>
 
@@ -277,6 +416,9 @@
                 developing an anticipatory action framework for a high-exposure small island
                 developing state.
               </p>
+              <div class="photo-gallery" style="grid-template-columns: repeat(2, minmax(120px, 160px)); margin-top: 1rem; margin-bottom: 0;">
+                <div class="gallery-item"><img src="photos/kath_msc.jpg" alt="Katherine at her MSc graduation" /></div>
+              </div>
             </div>
 
             <div class="timeline-entry">
@@ -288,6 +430,10 @@
                 Interdisciplinary bachelor combining engineering, social science, and design thinking.
                 Completed within the ATLAS Honour's Programme at University College Twente.
               </p>
+              <div class="photo-gallery" style="grid-template-columns: repeat(2, minmax(120px, 160px)); margin-top: 1rem; margin-bottom: 0;">
+                <div class="gallery-item"><img src="photos/kath_bsc_1.jpg" alt="Katherine at her BSc graduation" /></div>
+                <div class="gallery-item"><img src="photos/kath_bsc_2.jpg" alt="Katherine receiving an award at her BSc graduation" /></div>
+              </div>
             </div>
 
           </div>
@@ -312,14 +458,8 @@
         <!-- Sidebar -->
         <div class="about-sidebar">
 
-          <!--
-            PROFILE PHOTO: Replace the div below with your actual photo.
-            Example: <img src="photos/profile.jpg" alt="Katherine van Roon" />
-            inside the .profile-photo-wrap div below.
-          -->
-          <div class="profile-photo-wrap photo-placeholder" style="aspect-ratio:3/4; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            <span style="font-family:var(--font-mono); font-size:0.6rem; color:var(--muted);">ADD PROFILE PHOTO</span>
+          <div class="profile-photo-wrap">
+            <img src="photos/kath.jpg" alt="Katherine van Roon" />
           </div>
 
           <div class="sidebar-links">
@@ -381,6 +521,54 @@
       </div>
     </section>
 
+    <!-- ═══ OUTSIDE OF WORK ═══ -->
+    <section id="outside-work">
+      <span class="eyebrow">Off the clock</span>
+      <h2>Outside of work</h2>
+      <p class="section-intro">
+        A few things I get up to when I'm not looking at flood maps — most of it involves
+        being active or working with my hands.
+      </p>
+
+      <div class="hobby-block">
+        <h4>Football</h4>
+        <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem;">
+          I've played football (soccer) all my life and still love it to this day — rain or shine,
+          evidently.
+        </p>
+        <div class="photo-gallery">
+          <div class="gallery-item"><img src="photos/football.jpg" alt="Katherine playing football in the rain" /></div>
+          <div class="gallery-item"><img src="photos/football_2.jpg" alt="Katherine playing football" /></div>
+          <div class="gallery-item"><img src="photos/football_3.jpg" alt="Katherine playing football" /></div>
+        </div>
+      </div>
+
+      <div class="hobby-block">
+        <h4>Baking & cooking</h4>
+        <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem;">
+          I also really like to bake and cook — anything from fresh pasta to a batch of
+          cardamom buns.
+        </p>
+        <div class="photo-gallery gallery-2">
+          <div class="gallery-item"><img src="photos/baking.jpg" alt="Katherine making fresh pasta" /></div>
+          <div class="gallery-item"><img src="photos/baking_2.jpg" alt="Cardamom buns Katherine made" /></div>
+        </div>
+      </div>
+
+      <div class="hobby-block">
+        <h4>Crafting & the outdoors</h4>
+        <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem;">
+          I enjoy crafting in some capacity too — making my own clothes, knitting, or
+          embroidering — and getting outside for a jog when the weather's nice.
+        </p>
+        <div class="photo-gallery gallery-2">
+          <div class="gallery-item"><img src="photos/sewing.jpg" alt="Katherine sewing" /></div>
+          <div class="gallery-item"><img src="photos/park.jpg" alt="Katherine at the park" /></div>
+        </div>
+      </div>
+
+    </section>
+
     <!-- ═══ CONTACT ═══ -->
     <section id="contact">
       <span class="eyebrow">Get in touch</span>
@@ -411,6 +599,43 @@
       <a href="mailto:vanroonk@gmail.com">Email</a>
     </p>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">Close ✕</button>
+    <img src="" alt="" id="lightbox-img" />
+  </div>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('lightbox');
+      const overlayImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('.gallery-item img, .profile-photo-wrap img').forEach(function (img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('active');
+        });
+      });
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        overlayImg.src = '';
+      }
+
+      overlay.addEventListener('click', closeLightbox);
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 
 </body>
 </html>
