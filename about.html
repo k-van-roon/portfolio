@@ -196,13 +196,8 @@
       margin-bottom: 1.75rem;
     }
 
-    /* Outside of work section */
-    #outside-work {
-      border-top: 1px solid var(--border);
-    }
-
     .hobby-block {
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.75rem;
     }
 
     .hobby-block:last-child {
@@ -215,7 +210,7 @@
       color: var(--sage);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
 
     /* Contact section */
@@ -370,10 +365,52 @@
             at <strong>Fast Hazard</strong>, where I still am today.
           </p>
 
-          <div class="photo-gallery">
+          <div class="photo-gallery gallery-2">
             <div class="gallery-item"><img src="photos/delft.jpg" alt="Katherine in Delft" /></div>
             <div class="gallery-item"><img src="photos/deltares.jpg" alt="Katherine wearing her Deltares lanyard" /></div>
-            <div class="gallery-item"><img src="photos/FH.jpg" alt="The Fast Hazard team" /></div>
+          </div>
+
+          <h3>Outside of work</h3>
+          <p>
+            A few things I get up to when I'm not looking at flood maps — most of it involves
+            being active or working with my hands.
+          </p>
+
+          <div class="hobby-block">
+            <h4>Football</h4>
+            <p>
+              I've played football (soccer) all my life and still love it to this day — rain
+              or shine, evidently.
+            </p>
+            <div class="photo-gallery">
+              <div class="gallery-item"><img src="photos/football.jpg" alt="Katherine playing football in the rain" /></div>
+              <div class="gallery-item"><img src="photos/football_2.jpg" alt="Katherine playing football" /></div>
+              <div class="gallery-item"><img src="photos/football_3.jpg" alt="Katherine playing football" /></div>
+            </div>
+          </div>
+
+          <div class="hobby-block">
+            <h4>Baking & cooking</h4>
+            <p>
+              I also really like to bake and cook — anything from fresh pasta to a batch of
+              cardamom buns.
+            </p>
+            <div class="photo-gallery gallery-2">
+              <div class="gallery-item"><img src="photos/baking.jpg" alt="Katherine making fresh pasta" /></div>
+              <div class="gallery-item"><img src="photos/baking_2.jpg" alt="Cardamom buns Katherine made" /></div>
+            </div>
+          </div>
+
+          <div class="hobby-block">
+            <h4>Crafting & the outdoors</h4>
+            <p>
+              I enjoy crafting in some capacity too — making my own clothes, knitting, or
+              embroidering — and getting outside for a jog when the weather's nice.
+            </p>
+            <div class="photo-gallery gallery-2">
+              <div class="gallery-item"><img src="photos/sewing.jpg" alt="Katherine sewing" /></div>
+              <div class="gallery-item"><img src="photos/park.jpg" alt="Katherine at the park" /></div>
+            </div>
           </div>
 
           <h3>Experience</h3>
@@ -395,6 +432,9 @@
                 FastFlood Global tool and tutorial suite. Presented at EGU Vienna and organised a
                 tutorial session at ISPRS (Toronto).
               </p>
+              <div class="photo-gallery" style="grid-template-columns: minmax(140px, 240px); margin-top: 1rem; margin-bottom: 0;">
+                <div class="gallery-item"><img src="photos/FH.jpg" alt="The Fast Hazard team" /></div>
+              </div>
             </div>
 
             <div class="timeline-entry">
@@ -525,54 +565,6 @@
 
         </div>
       </div>
-    </section>
-
-    <!-- ═══ OUTSIDE OF WORK ═══ -->
-    <section id="outside-work">
-      <span class="eyebrow">Off the clock</span>
-      <h2>Outside of work</h2>
-      <p class="section-intro">
-        A few things I get up to when I'm not looking at flood maps — most of it involves
-        being active or working with my hands.
-      </p>
-
-      <div class="hobby-block">
-        <h4>Football</h4>
-        <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem;">
-          I've played football (soccer) all my life and still love it to this day — rain or shine,
-          evidently.
-        </p>
-        <div class="photo-gallery">
-          <div class="gallery-item"><img src="photos/football.jpg" alt="Katherine playing football in the rain" /></div>
-          <div class="gallery-item"><img src="photos/football_2.jpg" alt="Katherine playing football" /></div>
-          <div class="gallery-item"><img src="photos/football_3.jpg" alt="Katherine playing football" /></div>
-        </div>
-      </div>
-
-      <div class="hobby-block">
-        <h4>Baking & cooking</h4>
-        <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem;">
-          I also really like to bake and cook — anything from fresh pasta to a batch of
-          cardamom buns.
-        </p>
-        <div class="photo-gallery gallery-2">
-          <div class="gallery-item"><img src="photos/baking.jpg" alt="Katherine making fresh pasta" /></div>
-          <div class="gallery-item"><img src="photos/baking_2.jpg" alt="Cardamom buns Katherine made" /></div>
-        </div>
-      </div>
-
-      <div class="hobby-block">
-        <h4>Crafting & the outdoors</h4>
-        <p style="color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem;">
-          I enjoy crafting in some capacity too — making my own clothes, knitting, or
-          embroidering — and getting outside for a jog when the weather's nice.
-        </p>
-        <div class="photo-gallery gallery-2">
-          <div class="gallery-item"><img src="photos/sewing.jpg" alt="Katherine sewing" /></div>
-          <div class="gallery-item"><img src="photos/park.jpg" alt="Katherine at the park" /></div>
-        </div>
-      </div>
-
     </section>
 
     <!-- ═══ CONTACT ═══ -->
