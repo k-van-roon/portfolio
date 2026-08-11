@@ -77,6 +77,57 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+
+    .update-photo img:hover {
+      opacity: 0.88;
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 10, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2.5rem;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.75rem;
+      right: 2rem;
+      color: var(--parchment);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      border-radius: 3px;
+      background: transparent;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--sage);
+      color: var(--sage);
     }
 
     /* Two-photo row (for entries with multiple images) */
@@ -184,10 +235,11 @@
             data-agnostic approach to applying the FastFlood model that is designed to perform
             reliably anywhere in the world, including in data-sparse environments. The approach
             prioritises speed and accuracy while remaining scalable and reproducible across
-            diverse hydrological contexts. The poster I presented explored how this methodology
-            was applied to case study locations across Canada under various input scenarios,
-            and discussed its potential for operational early warning and national-scale
-            risk assessment.
+            diverse hydrological contexts. The
+            <a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-11238.html" target="_blank">poster I presented</a>
+            explored how this methodology was applied to case study locations across Canada
+            under various input scenarios, and discussed its potential for operational early
+            warning and national-scale risk assessment.
           </p>
           <p>
             Later in the year, I attended the <strong>ISPRS symposium in Toronto</strong>.
@@ -341,7 +393,9 @@
             team (UNDAC)</strong> to do emergency flood predictions and exposure calculations for
             parts of Mozambique that were at risk due to prolonged and intense rainfall. That led
             to a rather chaotic but productive afternoon video calling with members of the team
-            across the Netherlands, working to get some useful preliminary results.
+            across the Netherlands, working to get some useful preliminary results. You can read
+            more about the wider collaboration behind this kind of response
+            <a href="https://www.dutchwatersector.com/news/collaborative-water-expertise-supports-disaster-response-and-resilience-worldwide" target="_blank">here</a>.
           </p>
           <p>
             We were thankfully able to wrap things up for the weekend, only a few hours later
@@ -376,8 +430,9 @@
           </div>
 
           <p>
-            After months of work, the <strong>FastFlood Global tool</strong> is live — and it's
-            genuinely exciting to see it out in the world.
+            After months of work, the
+            <a href="https://fastflood.org/global/" target="_blank"><strong>FastFlood Global tool</strong></a>
+            is live — and it's genuinely exciting to see it out in the world.
           </p>
           <p>
             I was involved from the early design and brainstorming stages through to
@@ -385,7 +440,9 @@
             end-to-end. There were some genuinely tricky technical problems to solve along
             the way, but working through those iteratively — trying things, seeing what broke,
             integrating user feedback, and going around the loop again — is exactly the kind
-            of process I find energising.
+            of process I find energising. The full methodology is written up in our
+            <a href="https://fasthazard-my.sharepoint.com/:b:/p/katherine_vanroon/IQAvcURWxgMISqjSYYwqAQ6QASc_6CDg0vHr4JczKO2qITY?e=4gOeye" target="_blank">whitepaper</a>,
+            for anyone who wants the technical detail.
           </p>
           <p>
             One of the parts I'm most proud of is the <strong>tutorial material</strong> I designed for the tool.
@@ -398,6 +455,8 @@
           </p>
           <p>
             This launch felt like a real milestone — both for the team and personally.
+            The launch also picked up some nice press —
+            <a href="https://www.utwente.nl/en/itc/news-events/2025/11/676280/dutch-spinoff-launches-groundbreaking-global-flood-forecasting-tool" target="_blank">University of Twente covered it here</a>.
             More to come.
           </p>
         </div>
@@ -416,6 +475,42 @@
       <a href="mailto:vanroonk.com">Email</a>
     </p>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">Close ✕</button>
+    <img src="" alt="" id="lightbox-img" />
+  </div>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('lightbox');
+      const overlayImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('.update-photo img').forEach(function (img) {
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('active');
+        });
+      });
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        overlayImg.src = '';
+      }
+
+      overlay.addEventListener('click', closeLightbox);
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 
 </body>
 </html>
