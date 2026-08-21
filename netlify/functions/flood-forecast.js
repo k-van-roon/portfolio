@@ -8,7 +8,7 @@ exports.handler = async function (event) {
   const headers = {
     // Tighten this to your actual GitHub Pages origin once deployed,
     // e.g. 'https://k-van-roon.github.io'
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': 'https://k-van-roon.github.io',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
   };
