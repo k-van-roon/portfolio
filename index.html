@@ -3,7 +3,431 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katherine van Roon — GIS & Climate Hazard</title><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Katherine van Roon — GIS & Climate Hazard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Homepage-specific styles ── */
+
+    /* Hero */
+    #hero {
+      padding: 7rem 0 5.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-coords {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--border);
+      line-height: 2;
+      text-align: right;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.8;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    /* Hero terrain divider — the signature: a hand-drawn elevation profile SVG */
+    .terrain-divider {
+      width: 100%;
+      height: 48px;
+      margin: 0;
+      display: block;
+      opacity: 0.35;
+    }
+
+    /* Homepage project preview (3 cards) */
+    .projects-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+    }
+
+    /* Homepage about strip */
+    .about-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-strip p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .about-strip-skills {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .skill-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* Homepage updates preview */
+    .updates-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+    }
+
+    /* Featured project thumbnail on the homepage preview card */
+    .card-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      margin-bottom: 1.1rem;
+    }
+
+    .update-snapshot {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .update-snapshot:hover {
+      border-color: var(--sage);
+      transform: translateY(-3px);
+    }
+
+    .update-snapshot-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: var(--canopy);
+    }
+
+    .update-snapshot-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .update-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .update-snapshot h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .update-snapshot p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    .update-cta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    @media (max-width: 780px) {
+      #hero { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-coords { display: none; }
+      .about-strip { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
+    <ul>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="updates.html">Updates</a></li>
+      <li><a href="about.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="hero" style="border-top: none;">
+      <div>
+        <span class="eyebrow">Climate Hazard · Remote Sensing · GIS</span>
+        <h1>From satellite<br /><em>to street level.</em></h1>
+        <p class="hero-subtitle">
+          I build spatial tools and analysis that translate complex climate hazard data
+          into decisions communities can act on — before disaster strikes.
+        </p>
+        <div class="hero-links">
+          <a href="projects.html" class="btn btn-primary">View Projects</a>
+          <a href="about.html" class="btn btn-ghost">About me</a>
+          <a href="CV_vanRoon.pdf" class="btn btn-ghost" target="_blank">Download CV</a>
+        </div>
+      </div>
+
+      <!-- Coordinates annotation -->
+      <div class="hero-coords" aria-hidden="true">
+        15°18′N · 61°23′W<br/>
+        Dominica, Lesser Antilles<br/>
+        ───────────<br/>
+        52°13′N · 5°58′E<br/>
+        Apeldoorn, NL<br/>
+        ───────────<br/>
+        EPSG:4326 · WGS84
+      </div>
+    </section>
+
+    <!-- Terrain divider -->
+    <svg class="terrain-divider" viewBox="0 0 1100 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polyline points="0,40 80,38 140,30 200,35 260,20 310,28 360,12 400,22 440,8 480,18 520,25 560,10 600,20 640,30 680,18 730,28 780,15 830,25 880,32 940,22 1000,35 1060,28 1100,32" fill="none" stroke="#2596be" stroke-width="1.2"/>
+      <polyline points="0,44 80,43 140,37 200,41 260,28 310,35 360,20 400,30 440,15 480,26 520,33 560,18 600,28 640,38 680,26 730,36 780,23 830,33 880,40 940,30 1000,42 1060,36 1100,40" fill="none" stroke="#2596be" stroke-width="0.6" opacity="0.5"/>
+    </svg>
+
+    <!-- ═══ PROJECTS PREVIEW ═══ -->
+    <section id="projects-preview">
+      <span class="eyebrow">Selected work</span>
+      <h2>Projects</h2>
+      <p class="section-intro">
+        A selection of flood risk analyses, remote sensing workflows, and climate resilience tools.
+      </p>
+
+      <div class="projects-preview">
+
+        <a href="projects.html#featured" class="card">
+          <img src="https://cdn.arcgis.com/sharing/rest/content/items/1fb8dcacd8534330a8e9ef0038e8fad5/resources/B4_PVa0T30aTDXL8JC311.jpg?w=800"
+               alt="Compound flood risk assessment for Dominica" class="card-thumb" />
+          <span class="card-coord">15.30°N · 61.39°W</span>
+          <p class="card-type">Risk Assessment · StoryMap</p>
+          <h3>Compound Flood Risk — Dominica</h3>
+          <p class="card-desc">
+            Building-level flood risk index for Dominica combining six flood return period
+            rasters with a ~39,750-building exposure layer, following the UNDRR
+            Hazard × Exposure framework and framed around Hurricane Maria (2017).
+          </p>
+          <div class="card-tags">
+            <span class="tag">QGIS</span>
+            <span class="tag">Python</span>
+            <span class="tag">FastFlood</span>
+            <span class="tag">WorldPop</span>
+            <span class="tag">StoryMaps</span>
+          </div>
+          <span class="card-cta">View Project</span>
+        </a>
+
+        <a href="#" class="card" target="_blank">
+          <!-- REPLACE href with your GEE script link -->
+          <span class="card-coord">25.20°N · 55.27°E</span>
+          <p class="card-type">Remote Sensing · Google Earth Engine</p>
+          <h3>SAR Flood Extent Mapping — UAE</h3>
+          <p class="card-desc">
+            Sentinel-1 SAR change detection pipeline mapping flood extent across Al Ain
+            and Dubai following the April 2024 extreme rainfall event. Calibrated
+            against optical imagery and operational thresholds.
+          </p>
+          <div class="card-tags">
+            <span class="tag">GEE</span>
+            <span class="tag">Sentinel-1</span>
+            <span class="tag">SAR</span>
+            <span class="tag">Change Detection</span>
+          </div>
+          <span class="card-cta">View Project</span>
+        </a>
+
+        <a href="#" class="card" target="_blank">
+          <!-- REPLACE href with your GitHub repo link -->
+          <span class="card-coord">Variable AOI</span>
+          <p class="card-type">Spatial Analysis · Python</p>
+          <h3>Flood Risk Composite Scoring Tool</h3>
+          <p class="card-desc">
+            A reusable Python pipeline for normalising, weighting, and combining
+            multi-source raster inputs into a composite risk index. Designed for
+            reproducibility across diverse hydrological and geographic contexts.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Rasterio</span>
+            <span class="tag">GeoPandas</span>
+            <span class="tag">NumPy</span>
+          </div>
+          <span class="card-cta">View on GitHub</span>
+        </a>
+
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="projects.html" class="btn btn-ghost">All projects →</a>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT STRIP ═══ -->
+    <section id="about-strip">
+      <span class="eyebrow">Background</span>
+      <h2>About</h2>
+      <div class="about-strip">
+        <div>
+          <p>
+            I'm a climate hazard consultant and geo-data specialist based in the Netherlands,
+            working at the intersection of flood risk modelling, anticipatory action, and
+            disaster risk reduction.
+          </p>
+          <p>
+            At <a href="https://fasthazard.com" style="color:var(--sage); text-underline-offset:3px;">Fast Hazard</a>,
+            I design scalable flood modelling workflows and help translate dense technical
+            outputs into tools and products that real decision-makers can act on — from
+            national risk assessments to community-level early warning systems.
+          </p>
+          <div style="margin-top: 1.5rem;">
+            <a href="about.html" class="btn btn-ghost">Full profile →</a>
+          </div>
+        </div>
+
+        <div class="about-strip-skills">
+          <div>
+            <p class="skill-group-label">Tools & Platforms</p>
+            <div class="skills-row">
+              <span class="skill-pill">QGIS</span>
+              <span class="skill-pill">ArcGIS Pro</span>
+              <span class="skill-pill">Google Earth Engine</span>
+              <span class="skill-pill">FastFlood CLI</span>
+              <span class="skill-pill">StoryMaps</span>
+            </div>
+          </div>
+          <div>
+            <p class="skill-group-label">Languages & Libraries</p>
+            <div class="skills-row">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">GeoPandas</span>
+              <span class="skill-pill">Rasterio</span>
+              <span class="skill-pill">JavaScript (GEE)</span>
+            </div>
+          </div>
+          <div>
+            <p class="skill-group-label">Methods</p>
+            <div class="skills-row">
+              <span class="skill-pill">Flood Modelling</span>
+              <span class="skill-pill">SAR Change Detection</span>
+              <span class="skill-pill">Risk Assessment</span>
+              <span class="skill-pill">Anticipatory Action</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ UPDATES PREVIEW ═══ -->
+    <section id="updates-preview">
+      <span class="eyebrow">Latest</span>
+      <h2>Updates</h2>
+      <p class="section-intro">
+        Notes from the field — conferences, projects, and things I'm learning.
+      </p>
+
+      <div class="updates-preview">
+
+        <!-- UPDATE SNAPSHOT 1 — EGU / ISPRS, July 2026 -->
+        <a href="updates.html#egu-isprs-2026" class="update-snapshot">
+          <img src="photos/EGU.jpg" alt="EGU Vienna 2026" class="update-snapshot-img" />
+          <div class="update-snapshot-body">
+            <p class="update-date">July 2026</p>
+            <h3>Two conferences, two continents</h3>
+            <p>Presented a data-agnostic FastFlood approach at EGU Vienna, then organised a tutorial session at the ISPRS symposium in Toronto.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+        <!-- UPDATE SNAPSHOT 2 — DRRS Flood Day, June 2026 -->
+        <a href="updates.html#drrs-flood-day-2026" class="update-snapshot">
+          <img src="photos/drrs_day.jpg" alt="DRRS Flood Day in Utrecht" class="update-snapshot-img" />
+          <div class="update-snapshot-body">
+            <p class="update-date">June 2026</p>
+            <h3>DRRS Flood Day in Utrecht</h3>
+            <p>Met the DRRS Flood team in person for the first time and served solo as an expert, prepping for the upcoming hurricane season.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+        <!-- UPDATE SNAPSHOT 3 — One Year at Fast Hazard, March 2026 -->
+        <a href="updates.html#one-year-fasthazard" class="update-snapshot">
+          <img src="photos/one_year_update.jpg" alt="One year at Fast Hazard" class="update-snapshot-img" />
+          <div class="update-snapshot-body">
+            <p class="update-date">March 2026</p>
+            <h3>One year at Fast Hazard</h3>
+            <p>Reflecting on a year of flood modelling, project leadership, and learning the business side of climate consultancy — from deliverables to contract negotiations.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <a href="updates.html" class="btn btn-ghost">All updates →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Katherine van Roon</p>
+    <p>
+      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:vanroonk.com">Email</a>
+    </p>
+  </footer>
+
+</body>
+</html>
+
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── Homepage-specific styles ── */
