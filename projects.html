@@ -55,6 +55,112 @@
       padding-bottom: 0.6rem;
       border-bottom: 1px solid var(--border);
     }
+
+    /* ── Featured project ── */
+    .featured-project {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: stretch;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      border: 1px solid var(--sage);
+      border-radius: 2px;
+      padding: 0.2rem 0.55rem;
+      margin-bottom: 1rem;
+    }
+
+    .featured-project h3 {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .featured-project .card-coord {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .featured-motivation {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .featured-project p.body-text {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 0.9rem;
+    }
+
+    .featured-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 1.5rem;
+      margin: 1.75rem 0;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .featured-stat .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      color: var(--sage);
+      display: block;
+    }
+
+    .featured-stat .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .featured-media {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .featured-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 860px) {
+      .featured-project {
+        grid-template-columns: 1fr;
+        padding: 1.75rem;
+      }
+      .featured-media {
+        order: -1;
+        min-height: 260px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -77,34 +183,100 @@
         GIS analyses, remote sensing workflows, risk assessments, and spatial tools —
         built across flood hazard, climate resilience, and disaster risk reduction.
       </p>
+    </div>
 
-      <div class="filter-row">
-        <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
-        <button class="filter-btn" onclick="filterCards('storymap', this)">StoryMap</button>
-        <button class="filter-btn" onclick="filterCards('gee', this)">GEE</button>
-        <button class="filter-btn" onclick="filterCards('python', this)">Python</button>
-        <button class="filter-btn" onclick="filterCards('risk', this)">Risk Assessment</button>
+    <!-- ═══ FEATURED PROJECT — Dominica StoryMap ═══ -->
+    <div class="featured-project" id="featured" style="scroll-margin-top: 100px;">
+      <div>
+        <span class="featured-badge">Featured · Live StoryMap</span>
+        <span class="card-coord">15.30°N · 61.39°W · Dominica, Lesser Antilles</span>
+        <h3>Compound Flood Risk Assessment — Dominica</h3>
+
+        <p class="body-text">
+          Small Island Developing States face some of the world's most acute flood risk,
+          but rarely the data infrastructure to assess it in detail. This project asks a
+          simple question: how far can free, globally available tools and open data get
+          you toward building-level flood risk information in a data-scarce SIDS context?
+          Hurricane Maria (2017) — which caused damage equivalent to roughly 226% of
+          Dominica's GDP in a single night — is the reference event that motivates the
+          analysis and anchors the narrative.
+        </p>
+
+        <p class="featured-motivation">What it does</p>
+        <p class="body-text">
+          Six FastFlood-modelled flood return period rasters (5–200yr) are combined with
+          Dominica's building footprint layer to classify individual buildings by flood
+          frequency and depth threshold. Hazard and exposure are then combined into an
+          island-wide risk raster following the UNDRR Risk = Hazard × Exposure framework,
+          reclassified into four risk classes, and delivered as an interactive StoryMap —
+          a methodology designed to be replicable in other data-scarce island contexts.
+        </p>
+
+        <div class="featured-stats">
+          <div class="featured-stat">
+            <span class="stat-num">~39,750</span>
+            <span class="stat-label">Buildings classified</span>
+          </div>
+          <div class="featured-stat">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Flood return periods</span>
+          </div>
+          <div class="featured-stat">
+            <span class="stat-num">4</span>
+            <span class="stat-label">Risk classes, island-wide</span>
+          </div>
+          <div class="featured-stat">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Depth thresholds (0.25m / 0.50m)</span>
+          </div>
+        </div>
+
+        <div class="card-tags" style="margin-bottom: 1.75rem;">
+          <span class="tag">QGIS</span>
+          <span class="tag">Python</span>
+          <span class="tag">FastFlood</span>
+          <span class="tag">WorldPop</span>
+          <span class="tag">ArcGIS Online</span>
+          <span class="tag">StoryMaps</span>
+        </div>
+
+        <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5"
+           class="btn btn-primary" target="_blank" rel="noopener">
+          View the StoryMap ↗
+        </a>
       </div>
+
+      <div class="featured-media">
+        <img src="https://cdn.arcgis.com/sharing/rest/content/items/1fb8dcacd8534330a8e9ef0038e8fad5/resources/B4_PVa0T30aTDXL8JC311.jpg?w=800"
+             alt="Compound flood risk assessment for Dominica — StoryMap cover" />
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCards('storymap', this)">StoryMap</button>
+      <button class="filter-btn" onclick="filterCards('gee', this)">GEE</button>
+      <button class="filter-btn" onclick="filterCards('python', this)">Python</button>
+      <button class="filter-btn" onclick="filterCards('risk', this)">Risk Assessment</button>
     </div>
 
     <div class="projects-grid" id="projects-grid">
 
       <!-- ── FLOOD RISK / STORYMAP ── -->
-      <a href="#" class="card" target="_blank" data-tags="storymap risk">
+      <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5" class="card" target="_blank" rel="noopener" data-tags="storymap risk">
         <span class="card-coord">15.30°N · 61.39°W</span>
         <p class="card-type">Risk Assessment · StoryMap</p>
         <h3>Compound Flood Risk — Dominica</h3>
         <p class="card-desc">
-          Multi-layer compound flood risk index for Dominica combining coastal storm surge
-          exposure, pluvial flash flood susceptibility, and social vulnerability under the
-          UNDRR Hazard × Exposure × Vulnerability framework. Designed to support
-          anticipatory action in a high-risk SIDS context.
+          Building-level flood risk index for Dominica combining six flood return period
+          rasters with a ~39,750-building exposure layer under the UNDRR
+          Hazard × Exposure framework. Framed around Hurricane Maria (2017) and built as
+          a replicable methodology for data-scarce SIDS contexts.
         </p>
         <div class="card-tags">
           <span class="tag">QGIS</span>
           <span class="tag">Python</span>
-          <span class="tag">CHIRPS</span>
-          <span class="tag">FABDEM</span>
+          <span class="tag">FastFlood</span>
           <span class="tag">WorldPop</span>
           <span class="tag">StoryMaps</span>
         </div>
