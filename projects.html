@@ -61,7 +61,7 @@
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 3rem;
-      align-items: center;
+      align-items: stretch;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 4px;
@@ -137,7 +137,8 @@
 
     .featured-media {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 100%;
+      min-height: 380px;
       border-radius: 3px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -157,6 +158,7 @@
       }
       .featured-media {
         order: -1;
+        min-height: 260px;
       }
     }
   </style>
@@ -184,7 +186,7 @@
     </div>
 
     <!-- ═══ FEATURED PROJECT — Dominica StoryMap ═══ -->
-    <div class="featured-project">
+    <div class="featured-project" id="featured" style="scroll-margin-top: 100px;">
       <div>
         <span class="featured-badge">Featured · Live StoryMap</span>
         <span class="card-coord">15.30°N · 61.39°W · Dominica, Lesser Antilles</span>
