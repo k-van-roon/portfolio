@@ -1,5 +1,5 @@
 // Replace with your actual Netlify function URL once deployed
-const FLOOD_FN_URL = 'https://YOUR-NETLIFY-SITE.netlify.app/.netlify/functions/flood-forecast';
+const FLOOD_FN_URL = 'https://celebrated-creponne-e25e08.netlify.app/';
 
 const floodBtn = document.getElementById('flood-btn');
 const floodResult = document.getElementById('flood-result');
