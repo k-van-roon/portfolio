@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-flood-forecast-function",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify Function that calls the FastFlood API and summarizes the result for the portfolio flood-forecast widget.",
+  "dependencies": {
+    "geotiff": "^2.1.3"
+  }
+}
