@@ -3,188 +3,291 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — Katherine van Roon</title>
+  <title>About — Katherine van Roon</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .page-header {
-      padding: 5rem 0 3.5rem;
-    }
+    .page-header { padding: 5rem 0 3.5rem; }
 
-    .section-block {
-      margin-bottom: 5rem;
-    }
-
-    .section-block-head {
-      margin-bottom: 2rem;
-    }
-
-    /* ── Featured project ── */
-    .featured-project {
+    /* Two-col about layout */
+    .about-layout {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 3rem;
-      align-items: stretch;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2.75rem;
-      margin-bottom: 5rem;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
     }
 
-    .featured-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--sage);
-      border: 1px solid var(--sage);
-      border-radius: 2px;
-      padding: 0.2rem 0.55rem;
-      margin-bottom: 1rem;
-    }
-
-    .featured-project h3 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .featured-project .card-coord {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .featured-motivation {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin: 1.5rem 0 0.5rem;
-    }
-
-    .featured-project p.body-text {
+    .about-body p {
       color: var(--muted);
       font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 0.9rem;
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
     }
 
-    .featured-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 1.5rem;
-      margin: 1.75rem 0;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .featured-stat .stat-num {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
+    .about-body h3 {
+      font-size: 1.1rem;
       color: var(--sage);
-      display: block;
-    }
-
-    .featured-stat .stat-label {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
+      font-weight: 400;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      margin: 2.5rem 0 1rem;
     }
 
-    .featured-media {
+    /* Sidebar */
+    .about-sidebar {
+      position: sticky;
+      top: 80px;
+    }
+
+    /* Profile photo */
+    .profile-photo-wrap {
       width: 100%;
-      height: 100%;
-      min-height: 380px;
-      border-radius: 3px;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      background: var(--panel);
     }
 
-    .featured-media img {
+    .profile-photo-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    @media (max-width: 860px) {
-      .featured-project {
-        grid-template-columns: 1fr;
-        padding: 1.75rem;
-      }
-      .featured-media {
-        order: -1;
-        min-height: 260px;
-      }
-    }
-
-    /* ── Sneak peek / in-progress section ── */
-    .sneak-intro {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      max-width: 620px;
-      margin-top: 0.5rem;
-    }
-
-    .sneak-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.4rem;
-      margin-top: 2.25rem;
-    }
-
-    .card-sneak {
-      border: 1px dashed var(--border);
-      border-radius: 4px;
-      padding: 1.75rem;
+    .sidebar-links {
       display: flex;
       flex-direction: column;
-      transition: border-color 0.2s;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
     }
 
-    .card-sneak:hover {
-      border-color: var(--sage);
-    }
-
-    .sneak-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+    .sidebar-link {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 0.2rem 0.55rem;
-      margin-bottom: 1rem;
-      width: fit-content;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
     }
 
-    .sneak-badge::before {
-      content: "";
-      width: 5px;
-      height: 5px;
+    .sidebar-link:hover { color: var(--sage); }
+    .sidebar-link::before { content: '↗'; font-size: 0.75rem; }
+
+    /* Skills sidebar */
+    .skill-group { margin-bottom: 1.5rem; }
+
+    .skill-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* Experience timeline */
+    .timeline { margin-top: 0.5rem; }
+
+    .timeline-entry {
+      position: relative;
+      padding-left: 1.5rem;
+      padding-bottom: 2rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .timeline-entry:last-child {
+      border-left: 1px dashed var(--border);
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: var(--sage);
-      display: inline-block;
+      border: 2px solid var(--forest);
     }
 
-    .card-sneak h3 {
-      font-size: 1.15rem;
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-org {
+      font-size: 0.98rem;
+      color: var(--muted);
       margin-bottom: 0.6rem;
     }
 
-    .card-sneak .card-desc {
-      flex: 1;
+    .timeline-desc {
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Photo galleries (clickable, used throughout the bio + outside-of-work section) */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .photo-gallery.gallery-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.2s;
+    }
+
+    .gallery-item img:hover {
+      opacity: 0.88;
+    }
+
+    .gallery-caption {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-top: -1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hobby-block {
+      margin-bottom: 1.75rem;
+    }
+
+    .hobby-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .hobby-block h4 {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Contact section */
+    #contact {
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-grid p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-links-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 10, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2.5rem;
+      cursor: zoom-out;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.75rem;
+      right: 2rem;
+      color: var(--parchment);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      border-radius: 3px;
+      background: transparent;
+    }
+
+    .lightbox-close:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    @media (max-width: 780px) {
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-sidebar { position: static; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .photo-gallery.gallery-2 { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -193,195 +296,306 @@
   <nav>
     <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
     <ul>
-      <li><a href="projects.html" class="active">Projects</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html" class="active">About</a></li>
       <li><a href="updates.html">Updates</a></li>
-      <li><a href="about.html#contact">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <main>
     <div class="page-header">
-      <span class="eyebrow">Portfolio</span>
-      <h2>Projects</h2>
-      <p class="section-intro">
-        GIS analyses, remote sensing workflows, risk assessments, and spatial tools —
-        built across flood hazard, climate resilience, and disaster risk reduction.
-      </p>
+      <span class="eyebrow">Background</span>
+      <h2>About Me!</h2>
     </div>
 
-    <!-- ═══ FEATURED PROJECT — Dominica StoryMap ═══ -->
-    <div class="featured-project" id="featured" style="scroll-margin-top: 100px;">
-      <div>
-        <span class="featured-badge">Featured · Live StoryMap</span>
-        <span class="card-coord">15.30°N · 61.39°W · Dominica, Lesser Antilles</span>
-        <h3>Compound Flood Risk Assessment — Dominica</h3>
+    <section style="padding-top: 0; border-top: none;">
+      <div class="about-layout">
 
-        <p class="body-text">
-          Small Island Developing States face some of the world's most acute flood risk,
-          but rarely the data infrastructure to assess it in detail. This project asks a
-          simple question: how far can free, globally available tools and open data get
-          you toward building-level flood risk information in a data-scarce SIDS context?
-          Hurricane Maria (2017) — which caused damage equivalent to roughly 226% of
-          Dominica's GDP in a single night — is the reference event that motivates the
-          analysis and anchors the narrative.
+        <!-- Main bio -->
+        <div class="about-body">
+          <p>
+            I grew up in Chicago, in the United States, to Dutch and American parents; though
+            my Dutch father grew up in South America, so we were a culturally confused family.
+            (It's also the reason my Spanish is very good!)
+
+            One of my parents worked for an
+            airline while I was growing up, which meant a lot of travelling, especially back
+            to the Netherlands, which we made sure to visit every year.
+          </p>
+
+          <div class="photo-gallery gallery-2">
+            <div class="gallery-item"><img src="photos/chicago.jpg" alt="Chicago skyline" /></div>
+            <div class="gallery-item"><img src="photos/kath_NL_2008.jpg" alt="Young Katherine in the Netherlands, 2008" /></div>
+          </div>
+
+          <p>
+            I always loved the Netherlands; getting to visit family, and just being there, 
+            so when it came time to choose a university, I decided to move and start my BSc
+            at the University of Twente, at the Honours College. I had a great time at ATLAS,
+            getting to explore all sorts of topics, from civil engineering to earth observation
+            to natural hazards. It was during my bachelor's that I realised how much I liked
+            studying natural hazards specifically, which led me to Spatial Engineering for my
+            master's, also at Twente, but this time at the Faculty of Geo-Information Science
+            and Earth Observation (ITC). That faculty let me combine the technical side of the
+            work, remote sensing and spatial analysis, with the Natural Hazards and Disaster
+            Risk Reduction working group.
+          </p>
+
+          <p>
+            That turned out to be a great decision! Not only did I learn a lot, but I also got
+            a once-in-a-lifetime opportunity for my master's thesis: hands-on fieldwork on the
+            island of <strong>Dominica</strong>. Dominica is a Small Island Developing State with
+            a long history of devastating flooding and hurricane damage, and a strong national
+            push to become more climate resilient; a perfect fit for my research. While I was
+            there, I took in-field measurements to improve my flood model and spoke directly
+            with local officials to help design a more specialised solution for their situation.
+          </p>
+
+          <div class="photo-gallery">
+            <div class="gallery-item"><img src="photos/dominica_jungle.jpg" alt="Fieldwork in the Dominican jungle" /></div>
+            <div class="gallery-item"><img src="photos/fieldwork_measurements.jpg" alt="Taking measurements of the river course" /></div>
+            <div class="gallery-item"><img src="photos/commonwealth.jpg" alt="Visit to the Commonwealth of Dominica" /></div>
+            <div class="gallery-item"><img src="photos/disaster_management.jpg" alt="Visit to the Office of Disaster Management" /></div>
+          </div>
+
+          <p>
+            I also spent six months at <strong>Deltares</strong> as part of my MSc, which meant
+            getting to live in Delft and meet a new team; and funnily enough, my work at Fast Hazard now
+            crosses paths quite often with my old group there. After finishing my MSc, I started
+            at <strong>Fast Hazard</strong>, where I still am today.
+          </p>
+
+          <div class="photo-gallery gallery-2">
+            <div class="gallery-item"><img src="photos/delft.jpg" alt="Katherine in Delft" /></div>
+            <div class="gallery-item"><img src="photos/deltares.jpg" alt="Katherine wearing her Deltares lanyard" /></div>
+          </div>
+
+          <h3>Outside of Work</h3>
+          <p>
+            A few things I get up to when I'm not looking at maps; most of it involves
+            being active or working with my hands.
+          </p>
+
+          <div class="hobby-block">
+            <h4>Football</h4>
+            <p>
+              I've played football (soccer) all my life and still love it to this day; rain
+              or shine :).
+            </p>
+            <div class="photo-gallery">
+              <div class="gallery-item"><img src="photos/football.jpg" alt="Katherine playing football in the rain" /></div>
+              <div class="gallery-item"><img src="photos/football_2.jpg" alt="Katherine playing football" /></div>
+              <div class="gallery-item"><img src="photos/football_3.jpg" alt="Katherine playing football" /></div>
+            </div>
+          </div>
+
+          <div class="hobby-block">
+            <h4>Baking & Cooking</h4>
+            <p>
+              I also really like to bake and cook! I have loved baking ever since I was a kid, but got into cooking at university
+              so that I could eat real food even in my student house. 
+            </p>
+            <div class="photo-gallery gallery-2">
+              <div class="gallery-item"><img src="photos/baking.jpg" alt="Katherine making fresh pasta" /></div>
+              <div class="gallery-item"><img src="photos/baking_2.jpg" alt="Cardamom buns Katherine made" /></div>
+            </div>
+          </div>
+
+          <div class="hobby-block">
+            <h4>Crafting & the outdoors</h4>
+            <p>
+              I really enjoy crafting in quite a lot of forms; making my own clothes, knitting, or embroidery. I also try
+              my best to get outside if the weather is nice for a jog; the best route is through farmland outside of the city. 
+            </p>
+            <div class="photo-gallery gallery-2">
+              <div class="gallery-item"><img src="photos/sewing.jpg" alt="Katherine sewing" /></div>
+              <div class="gallery-item"><img src="photos/park.jpg" alt="Katherine at the park" /></div>
+            </div>
+          </div>
+
+          <h3>Approach</h3>
+          <p>
+            I have experience working across the full project lifecycle, from scoping data requirements and building
+            processing piplines, to producing deliverables and presenting findings to (non-) technical stakeholders. 
+            I've coordinated multidisciplinary teams under genuinely difficult conditions: emergency flood response, 
+            complex mult-partner consortia, and projects where the operational stakes are high. 
+          </p>
+          <p>
+            My technical work spans flood simulation (FastFlood, LISEM, HEC-RAS), remote sensing
+            analysis, probabilistic uncertainty modelling, and API development; but the thread
+            running through all of it is the same: making outputs that people can actually use.
+            Documentation, reproducibility, and clear communication are not afterthoughts for me;
+            they are part of what it means to do the work properly.
+          </p>
+          <p>
+            My passions for my work truly lie in making climate resilience and natural hazard risk reduction information 
+            accessible and easier to understand for all stakeholders. The intersection between climate risk and vulnerable 
+            populations fuels my work, and I want to continue finding opportunities that challenge me in this area and where
+            I can continue to tackle complex socio-technical problems with spatial data and modelling. 
+
+            Spatial data has the ability to arm those vulnerable to the impacts of climate change, and I want to
+            help them access this information!
+          </p>
+
+          <h3>Experience</h3>
+          <div class="timeline">
+
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">March 2025 — Present</p>
+              <p class="timeline-role">Climate Hazards Consultant & Developer</p>
+              <p class="timeline-org">Fast Hazard, Netherlands</p>
+              <p class="timeline-desc">
+                Delivering specialised flood modelling, hazard assessments, and exposure analysis
+                for government and humanitarian clients across Canada, the Caribbean, and Palestine.
+                Project lead on Natural Resources Canada's regional FastFlood modelling study and
+                the ESA-funded SAFEPLACE crisis response initiative. Member of the Dutch Disaster
+                Risk Reduction (DRRS) near-real-time modelling team, providing rapid flood mapping
+                and exposure analysis during active events. Contributed to FastFlood API and
+                software development (Python, Svelte), and led the design and launch of the
+                FastFlood Global tool and tutorial suite. Presented at EGU Vienna and organised a
+                tutorial session at ISPRS (Toronto).
+              </p>
+              <div class="photo-gallery" style="grid-template-columns: minmax(140px, 240px); margin-top: 1rem; margin-bottom: 0;">
+                <div class="gallery-item"><img src="photos/FH.jpg" alt="The Fast Hazard team" /></div>
+              </div>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">Aug — Dec 2024</p>
+              <p class="timeline-role">Intern</p>
+              <p class="timeline-org">Deltares, Netherlands</p>
+              <p class="timeline-desc">
+                Designed an uncertainty estimation module for the FloodAdapt software using Python
+                and Monte Carlo simulations. Developed a workflow to propagate uncertainty through
+                flood risk estimations, and analysed results using global sensitivity analysis.
+                Led workshops on uncertainty integration within multidisciplinary teams and produced
+                comprehensive technical documentation.
+              </p>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2022 — 2024</p>
+              <p class="timeline-role">MSc Spatial Engineering</p>
+              <p class="timeline-org">University of Twente, Netherlands</p>
+              <p class="timeline-desc">
+                Specialisation in Natural Hazards and Disaster Risk Reduction. Thesis:
+                <em>Integrating Probabilistic Weather Forecasting for Flood Early Warning in Dominica</em> —
+                developing an anticipatory action framework for a high-exposure small island
+                developing state.
+              </p>
+              <div class="photo-gallery" style="grid-template-columns: repeat(2, minmax(120px, 160px)); margin-top: 1rem; margin-bottom: 0;">
+                <div class="gallery-item"><img src="photos/kath_msc.jpg" alt="Katherine at her MSc graduation" /></div>
+              </div>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-dot" style="background: var(--border);"></div>
+              <p class="timeline-date">2019 — 2022</p>
+              <p class="timeline-role">BSc Technology & Liberal Arts and Sciences</p>
+              <p class="timeline-org">University of Twente — ATLAS Honour's Programme, University College Twente</p>
+              <p class="timeline-desc">
+                Interdisciplinary bachelor combining engineering, social science, and design thinking.
+                Completed within the ATLAS Honour's Programme at University College Twente.
+
+                Specialization in Earth Observation, Civil Engineering
+              </p>
+              <div class="photo-gallery" style="grid-template-columns: repeat(2, minmax(120px, 160px)); margin-top: 1rem; margin-bottom: 0;">
+                <div class="gallery-item"><img src="photos/kath_bsc_1.jpg" alt="Katherine at her BSc graduation" /></div>
+                <div class="gallery-item"><img src="photos/kath_bsc_2.jpg" alt="Katherine receiving an award at her BSc graduation" /></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="about-sidebar">
+
+          <div class="profile-photo-wrap">
+            <img src="photos/kath.jpg" alt="Katherine van Roon" />
+          </div>
+
+          <div class="sidebar-links">
+            <a href="CV_vanRoon.pdf" class="sidebar-link" target="_blank">Download CV</a>
+            <a href="https://www.linkedin.com/in/katherinevanroon/" class="sidebar-link" target="_blank">LinkedIn</a>
+            <a href="https://github.com/k-van-roon" class="sidebar-link" target="_blank">GitHub</a>
+            <a href="mailto:vanroonk@gmail.com" class="sidebar-link">Email</a>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Geo-Spatial</span>
+            <div class="skills-row">
+              <span class="skill-pill">FastFlood</span>
+              <span class="skill-pill">LISEM</span>
+              <span class="skill-pill">HEC-RAS</span>
+              <span class="skill-pill">QGIS</span>
+              <span class="skill-pill">ArcGIS Pro</span>
+              <span class="skill-pill">Google Earth Engine</span>
+              <span class="skill-pill">Near-Real Time Modelling</span>
+              <span class="skill-pill">Exposure Mapping</span>
+              <span class="skill-pill">Monte Carlo Simulations</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Technical</span>
+            <div class="skills-row">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">R</span>
+              <span class="skill-pill">Svelte</span>
+              <span class="skill-pill">API Development</span>
+              <span class="skill-pill">Azure</span>
+              <span class="skill-pill">Cloudflare</span>
+              <span class="skill-pill">Power Automate</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Soft Skills</span>
+            <div class="skills-row">
+              <span class="skill-pill">Project Leadership</span>
+              <span class="skill-pill">Client Management</span>
+              <span class="skill-pill">Emergency Response</span>
+              <span class="skill-pill">RFP / Proposal Writing</span>
+              <span class="skill-pill">Stakeholder Coordination</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <span class="skill-group-label">Languages</span>
+            <div class="skills-row">
+              <span class="skill-pill">English (Native)</span>
+              <span class="skill-pill">Spanish (C1)</span>
+              <span class="skill-pill">Dutch (A2/B1)</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact">
+      <span class="eyebrow">Get in touch</span>
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <p>
+          Interested in collaborating, discussing a project, or asking about my work?
+          I'm open to conversations about climate hazard consulting, GIS analysis,
+          and tool development.
         </p>
-
-        <p class="featured-motivation">What it does</p>
-        <p class="body-text">
-          Six FastFlood-modelled flood return period rasters (5–200yr) are combined with
-          Dominica's building footprint layer to classify individual buildings by flood
-          frequency and depth threshold. Hazard and exposure are then combined into an
-          island-wide risk raster following the UNDRR Risk = Hazard × Exposure framework,
-          reclassified into four risk classes, and delivered as an interactive StoryMap —
-          a methodology designed to be replicable in other data-scarce island contexts.
-        </p>
-
-        <div class="featured-stats">
-          <div class="featured-stat">
-            <span class="stat-num">~39,750</span>
-            <span class="stat-label">Buildings classified</span>
-          </div>
-          <div class="featured-stat">
-            <span class="stat-num">6</span>
-            <span class="stat-label">Flood return periods</span>
-          </div>
-          <div class="featured-stat">
-            <span class="stat-num">4</span>
-            <span class="stat-label">Risk classes, island-wide</span>
-          </div>
-          <div class="featured-stat">
-            <span class="stat-num">2</span>
-            <span class="stat-label">Depth thresholds (0.25m / 0.50m)</span>
-          </div>
+        <div class="contact-links-col">
+          <a href="mailto:vanroonk@gmail.com" class="btn btn-primary">Email me</a>
+          <a href="https://www.linkedin.com/in/katherinevanroon/" class="btn btn-ghost" target="_blank">LinkedIn</a>
+          <a href="https://github.com/k-van-roon" class="btn btn-ghost" target="_blank">GitHub</a>
         </div>
-
-        <div class="card-tags" style="margin-bottom: 1.75rem;">
-          <span class="tag">QGIS</span>
-          <span class="tag">Python</span>
-          <span class="tag">FastFlood</span>
-          <span class="tag">WorldPop</span>
-          <span class="tag">ArcGIS Online</span>
-          <span class="tag">StoryMaps</span>
-        </div>
-
-        <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5"
-           class="btn btn-primary" target="_blank" rel="noopener">
-          View the StoryMap ↗
-        </a>
       </div>
+    </section>
 
-      <div class="featured-media">
-        <img src="https://cdn.arcgis.com/sharing/rest/content/items/1fb8dcacd8534330a8e9ef0038e8fad5/resources/B4_PVa0T30aTDXL8JC311.jpg"
-             alt="Compound flood risk assessment for Dominica — StoryMap cover" />
-      </div>
-    </div>
-
-    <!-- ═══ SNEAK PEEK — projects in progress ═══ -->
-    <div class="section-block" id="sneak-peek" style="scroll-margin-top: 100px;">
-      <div class="section-block-head">
-        <span class="eyebrow">In progress</span>
-        <h2>What's next</h2>
-        <p class="sneak-intro">
-          These are already part of my day-to-day work — I'm in the process of pulling
-          each one out of client-proprietary form and rebuilding it as a clean, public
-          write-up. Full breakdowns and links will go live here as each is ready to share.
-        </p>
-      </div>
-
-      <div class="sneak-grid">
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Location-agnostic</span>
-          <p class="card-type">Flood Forecasting · FastFlood</p>
-          <h3>Data & Location-Agnostic Flood Forecasting</h3>
-          <p class="card-desc">
-            A FastFlood-based methodology for generating rapid flood forecasts in places
-            with little to no local hydrological data — designed to run consistently
-            regardless of location or data availability. Featured in research presented
-            at EGU.
-          </p>
-          <div class="card-tags">
-            <span class="tag">FastFlood</span>
-            <span class="tag">Forecasting</span>
-            <span class="tag">EGU</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Multi-site</span>
-          <p class="card-type">Asset Management · FastFlood API</p>
-          <h3>Asset Management Against Hazards</h3>
-          <p class="card-desc">
-            An automated methodology built on the FastFlood API to keep hazard exposure
-            updated across a portfolio of locations — built with retail chains,
-            municipalities, and other multi-site asset owners in mind.
-          </p>
-          <div class="card-tags">
-            <span class="tag">FastFlood API</span>
-            <span class="tag">Automation</span>
-            <span class="tag">Python</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Variable AOI</span>
-          <p class="card-type">Spatial Analysis · Python</p>
-          <h3>Flood Risk Composite Scoring Tool</h3>
-          <p class="card-desc">
-            A reusable, documented Python pipeline for normalising, weighting, and
-            combining multi-source raster inputs into a composite risk index — built for
-            reproducibility across diverse hydrological and data-sparse contexts.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Rasterio</span>
-            <span class="tag">GeoPandas</span>
-            <span class="tag">NumPy</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">19.82°S · 34.84°E</span>
-          <p class="card-type">Remote Sensing · Google Earth Engine</p>
-          <h3>Post-Cyclone Vegetation Loss — Mozambique</h3>
-          <p class="card-desc">
-            Pre- and post-cyclone NDVI comparison using Landsat/Sentinel-2 imagery to map
-            statistically significant vegetation loss and co-locate likely landslide
-            disturbance across affected terrain.
-          </p>
-          <div class="card-tags">
-            <span class="tag">GEE</span>
-            <span class="tag">Landsat</span>
-            <span class="tag">NDVI</span>
-            <span class="tag">Change Detection</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Horn of Africa</span>
-          <p class="card-type">Climate Data · Python</p>
-          <h3>CHIRPS Rainfall Extremes — Horn of Africa</h3>
-          <p class="card-desc">
-            Extraction and analysis of CHIRPS daily rainfall time series across the
-            Horn of Africa — computing 90th, 95th, and 99th percentile thresholds and
-            mapping return periods as a rainfall hazard input for compound flood models.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">xarray</span>
-            <span class="tag">Rasterio</span>
-            <span class="tag">CHIRPS</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </main>
 
   <footer>
@@ -391,9 +605,46 @@
       &nbsp;·&nbsp;
       <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
       &nbsp;·&nbsp;
-      <a href="mailto:vanroonk.com">Email</a>
+      <a href="mailto:vanroonk@gmail.com">Email</a>
     </p>
   </footer>
+
+  <!-- Lightbox overlay -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">Close ✕</button>
+    <img src="" alt="" id="lightbox-img" />
+  </div>
+
+  <script>
+    (function () {
+      const overlay = document.getElementById('lightbox');
+      const overlayImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      document.querySelectorAll('.gallery-item img, .profile-photo-wrap img').forEach(function (img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function () {
+          overlayImg.src = img.src;
+          overlayImg.alt = img.alt;
+          overlay.classList.add('active');
+        });
+      });
+
+      function closeLightbox() {
+        overlay.classList.remove('active');
+        overlayImg.src = '';
+      }
+
+      overlay.addEventListener('click', closeLightbox);
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
 
 </body>
 </html>
