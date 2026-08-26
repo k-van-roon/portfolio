@@ -48,11 +48,62 @@
       opacity: 0.35;
     }
 
-    /* Homepage project preview (3 cards) */
+    /* Homepage project preview (2 cards: featured + sneak peek) */
     .projects-preview {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.4rem;
+    }
+
+    /* Sneak-peek teaser card on the homepage */
+    .card-sneak-teaser {
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      padding: 1.9rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .card-sneak-teaser:hover {
+      border-color: var(--sage);
+    }
+
+    .sneak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.2rem 0.55rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .sneak-badge::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      display: inline-block;
+    }
+
+    .card-sneak-teaser h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-sneak-teaser .card-desc {
+      flex: 1;
+      margin-bottom: 1.1rem;
     }
 
     /* Homepage about strip */
@@ -257,42 +308,15 @@
           <span class="card-cta">View Project</span>
         </a>
 
-        <a href="#" class="card" target="_blank">
-          <!-- REPLACE href with your GEE script link -->
-          <span class="card-coord">25.20°N · 55.27°E</span>
-          <p class="card-type">Remote Sensing · Google Earth Engine</p>
-          <h3>SAR Flood Extent Mapping — UAE</h3>
+        <a href="projects.html#sneak-peek" class="card-sneak-teaser">
+          <span class="sneak-badge">In development</span>
+          <h3>More on the way</h3>
           <p class="card-desc">
-            Sentinel-1 SAR change detection pipeline mapping flood extent across Al Ain
-            and Dubai following the April 2024 extreme rainfall event. Calibrated
-            against optical imagery and operational thresholds.
+            A SAR flood mapping pipeline, a CHIRPS rainfall analysis, and a reusable
+            composite risk-scoring tool are all in progress — extending the Dominica
+            methodology to new hazard layers and contexts.
           </p>
-          <div class="card-tags">
-            <span class="tag">GEE</span>
-            <span class="tag">Sentinel-1</span>
-            <span class="tag">SAR</span>
-            <span class="tag">Change Detection</span>
-          </div>
-          <span class="card-cta">View Project</span>
-        </a>
-
-        <a href="#" class="card" target="_blank">
-          <!-- REPLACE href with your GitHub repo link -->
-          <span class="card-coord">Variable AOI</span>
-          <p class="card-type">Spatial Analysis · Python</p>
-          <h3>Flood Risk Composite Scoring Tool</h3>
-          <p class="card-desc">
-            A reusable Python pipeline for normalising, weighting, and combining
-            multi-source raster inputs into a composite risk index. Designed for
-            reproducibility across diverse hydrological and geographic contexts.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Rasterio</span>
-            <span class="tag">GeoPandas</span>
-            <span class="tag">NumPy</span>
-          </div>
-          <span class="card-cta">View on GitHub</span>
+          <span class="update-cta">See what's in progress →</span>
         </a>
 
       </div>
