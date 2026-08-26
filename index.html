@@ -17,16 +17,33 @@
       align-items: center;
     }
 
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1.1rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
     .hero-coords {
       font-family: var(--font-mono);
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       color: var(--border);
       line-height: 2;
       text-align: right;
     }
 
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 1.08rem;
       color: var(--muted);
       max-width: 480px;
       line-height: 1.8;
@@ -76,7 +93,7 @@
       align-items: center;
       gap: 0.4rem;
       font-family: var(--font-mono);
-      font-size: 0.6rem;
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
@@ -97,7 +114,7 @@
     }
 
     .card-sneak-teaser h3 {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       margin-bottom: 0.6rem;
     }
 
@@ -116,7 +133,7 @@
 
     .about-strip p {
       color: var(--muted);
-      font-size: 0.97rem;
+      font-size: 1.05rem;
       line-height: 1.85;
       margin-bottom: 1rem;
     }
@@ -129,7 +146,7 @@
 
     .skill-group-label {
       font-family: var(--font-mono);
-      font-size: 0.62rem;
+      font-size: 0.72rem;
       color: var(--sage);
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -194,7 +211,7 @@
 
     .update-date {
       font-family: var(--font-mono);
-      font-size: 0.62rem;
+      font-size: 0.72rem;
       color: var(--sage);
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -202,12 +219,12 @@
     }
 
     .update-snapshot h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
 
     .update-snapshot p {
-      font-size: 0.88rem;
+      font-size: 0.98rem;
       color: var(--muted);
       line-height: 1.65;
       flex: 1;
@@ -216,7 +233,7 @@
 
     .update-cta {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: 0.85rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--sage);
@@ -259,15 +276,18 @@
         </div>
       </div>
 
-      <!-- Coordinates annotation -->
-      <div class="hero-coords" aria-hidden="true">
-        15°18′N · 61°23′W<br/>
-        Dominica, Lesser Antilles<br/>
-        ───────────<br/>
-        52°13′N · 5°58′E<br/>
-        Apeldoorn, NL<br/>
-        ───────────<br/>
-        EPSG:4326 · WGS84
+      <!-- Photo + coordinates annotation -->
+      <div class="hero-visual">
+        <img src="photos/flood_example.jpg" alt="Flood modelling output example" class="hero-image" />
+        <div class="hero-coords" aria-hidden="true">
+          15°18′N · 61°23′W<br/>
+          Dominica, Lesser Antilles<br/>
+          ───────────<br/>
+          52°13′N · 5°58′E<br/>
+          Apeldoorn, NL<br/>
+          ───────────<br/>
+          EPSG:4326 · WGS84
+        </div>
       </div>
     </section>
 
@@ -312,9 +332,9 @@
           <span class="sneak-badge">In development</span>
           <h3>More on the way</h3>
           <p class="card-desc">
-            A SAR flood mapping pipeline, a CHIRPS rainfall analysis, and a reusable
-            composite risk-scoring tool are all in progress — extending the Dominica
-            methodology to new hazard layers and contexts.
+            A location-agnostic flood forecasting methodology, an automated hazard
+            monitoring tool for multi-site asset owners, and a reusable composite
+            risk-scoring tool are all in progress.
           </p>
           <span class="update-cta">See what's in progress →</span>
         </a>
@@ -391,7 +411,18 @@
 
       <div class="updates-preview">
 
-        <!-- UPDATE SNAPSHOT 1 — EGU / ISPRS, July 2026 -->
+        <!-- UPDATE SNAPSHOT 1 — Back to Dutch class, August 2026 -->
+        <a href="updates.html#dutch-class-2026" class="update-snapshot">
+          <img src="photos/kath_windmill.jpg" alt="Kath as a child in the Netherlands" class="update-snapshot-img" />
+          <div class="update-snapshot-body">
+            <p class="update-date">August 2026</p>
+            <h3>Headed back to Dutch class</h3>
+            <p>Starting night classes in September, working toward B2 Dutch by early 2027 — finally putting time behind a language I've understood far longer than I've been able to speak.</p>
+            <span class="update-cta">Read more →</span>
+          </div>
+        </a>
+
+        <!-- UPDATE SNAPSHOT 2 — EGU / ISPRS, July 2026 -->
         <a href="updates.html#egu-isprs-2026" class="update-snapshot">
           <img src="photos/EGU.jpg" alt="EGU Vienna 2026" class="update-snapshot-img" />
           <div class="update-snapshot-body">
@@ -402,24 +433,13 @@
           </div>
         </a>
 
-        <!-- UPDATE SNAPSHOT 2 — DRRS Flood Day, June 2026 -->
+        <!-- UPDATE SNAPSHOT 3 — DRRS Flood Day, June 2026 -->
         <a href="updates.html#drrs-flood-day-2026" class="update-snapshot">
           <img src="photos/drrs_day.jpg" alt="DRRS Flood Day in Utrecht" class="update-snapshot-img" />
           <div class="update-snapshot-body">
             <p class="update-date">June 2026</p>
             <h3>DRRS Flood Day in Utrecht</h3>
             <p>Met the DRRS Flood team in person for the first time and served solo as an expert, prepping for the upcoming hurricane season.</p>
-            <span class="update-cta">Read more →</span>
-          </div>
-        </a>
-
-        <!-- UPDATE SNAPSHOT 3 — One Year at Fast Hazard, March 2026 -->
-        <a href="updates.html#one-year-fasthazard" class="update-snapshot">
-          <img src="photos/one_year_update.jpg" alt="One year at Fast Hazard" class="update-snapshot-img" />
-          <div class="update-snapshot-body">
-            <p class="update-date">March 2026</p>
-            <h3>One year at Fast Hazard</h3>
-            <p>Reflecting on a year of flood modelling, project leadership, and learning the business side of climate consultancy — from deliverables to contract negotiations.</p>
             <span class="update-cta">Read more →</span>
           </div>
         </a>
