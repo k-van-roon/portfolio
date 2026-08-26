@@ -10,50 +10,12 @@
       padding: 5rem 0 3.5rem;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.4rem;
+    .section-block {
       margin-bottom: 5rem;
     }
 
-    /* Category filter row */
-    .filter-row {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-
-    .filter-btn {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      background: none;
-      color: var(--muted);
-      padding: 0.35rem 0.9rem;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      border-color: var(--sage);
-      color: var(--sage);
-    }
-
-    .category-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin: 2.5rem 0 1.25rem;
-      padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--border);
+    .section-block-head {
+      margin-bottom: 2rem;
     }
 
     /* ── Featured project ── */
@@ -66,7 +28,7 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       padding: 2.75rem;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
     .featured-badge {
@@ -161,6 +123,69 @@
         min-height: 260px;
       }
     }
+
+    /* ── Sneak peek / in-progress section ── */
+    .sneak-intro {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 620px;
+      margin-top: 0.5rem;
+    }
+
+    .sneak-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+      margin-top: 2.25rem;
+    }
+
+    .card-sneak {
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+
+    .card-sneak:hover {
+      border-color: var(--sage);
+    }
+
+    .sneak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.2rem 0.55rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .sneak-badge::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      display: inline-block;
+    }
+
+    .card-sneak h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-sneak .card-desc {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
@@ -252,125 +277,93 @@
       </div>
     </div>
 
-    <div class="filter-row">
-      <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
-      <button class="filter-btn" onclick="filterCards('storymap', this)">StoryMap</button>
-      <button class="filter-btn" onclick="filterCards('gee', this)">GEE</button>
-      <button class="filter-btn" onclick="filterCards('python', this)">Python</button>
-      <button class="filter-btn" onclick="filterCards('risk', this)">Risk Assessment</button>
-    </div>
-
-    <div class="projects-grid" id="projects-grid">
-
-      <!-- ── FLOOD RISK / STORYMAP ── -->
-      <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5" class="card" target="_blank" rel="noopener" data-tags="storymap risk">
-        <span class="card-coord">15.30°N · 61.39°W</span>
-        <p class="card-type">Risk Assessment · StoryMap</p>
-        <h3>Compound Flood Risk — Dominica</h3>
-        <p class="card-desc">
-          Building-level flood risk index for Dominica combining six flood return period
-          rasters with a ~39,750-building exposure layer under the UNDRR
-          Hazard × Exposure framework. Framed around Hurricane Maria (2017) and built as
-          a replicable methodology for data-scarce SIDS contexts.
+    <!-- ═══ SNEAK PEEK — projects in progress ═══ -->
+    <div class="section-block" id="sneak-peek" style="scroll-margin-top: 100px;">
+      <div class="section-block-head">
+        <span class="eyebrow">In progress</span>
+        <h2>What's next</h2>
+        <p class="sneak-intro">
+          A few analyses currently in development — extending the Dominica work into new
+          hazard layers, remote sensing pipelines, and reusable tools. Full write-ups and
+          links will go live here as each one is finished.
         </p>
-        <div class="card-tags">
-          <span class="tag">QGIS</span>
-          <span class="tag">Python</span>
-          <span class="tag">FastFlood</span>
-          <span class="tag">WorldPop</span>
-          <span class="tag">StoryMaps</span>
-        </div>
-        <span class="card-cta">View StoryMap</span>
-      </a>
-
-      <!-- ── SAR / GEE ── -->
-      <a href="#" class="card" target="_blank" data-tags="gee risk">
-        <span class="card-coord">25.20°N · 55.27°E</span>
-        <p class="card-type">Remote Sensing · Google Earth Engine</p>
-        <h3>SAR Flood Extent Mapping — UAE</h3>
-        <p class="card-desc">
-          Sentinel-1 SAR change detection pipeline mapping flood extent across Al Ain
-          and Dubai following the April 2024 extreme rainfall event. Calibrated against
-          optical imagery with adaptive thresholding.
-        </p>
-        <div class="card-tags">
-          <span class="tag">GEE</span>
-          <span class="tag">Sentinel-1</span>
-          <span class="tag">SAR</span>
-          <span class="tag">Change Detection</span>
-          <span class="tag">JavaScript</span>
-        </div>
-        <span class="card-cta">View Project</span>
-      </a>
-
-      <!-- ── PYTHON TOOL ── -->
-      <a href="#" class="card" target="_blank" data-tags="python risk">
-        <span class="card-coord">Variable AOI</span>
-        <p class="card-type">Spatial Analysis · Python</p>
-        <h3>Flood Risk Composite Scoring Tool</h3>
-        <p class="card-desc">
-          A reusable, documented Python pipeline for normalising, weighting, and combining
-          multi-source raster inputs into a composite risk index. Designed for
-          reproducibility across diverse hydrological contexts and sparse-data environments.
-        </p>
-        <div class="card-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Rasterio</span>
-          <span class="tag">GeoPandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">Matplotlib</span>
-        </div>
-        <span class="card-cta">View on GitHub</span>
-      </a>
-
-      <!-- ── NDVI / GEE ── -->
-      <a href="#" class="card" target="_blank" data-tags="gee">
-        <span class="card-coord">15.30°N · 61.39°W</span>
-        <p class="card-type">Remote Sensing · Google Earth Engine</p>
-        <h3>Post-Hurricane Vegetation Loss — Dominica</h3>
-        <p class="card-desc">
-          Pre- and post-Hurricane Maria NDVI comparison using Landsat 8 imagery to map
-          statistically significant vegetation loss and co-locate areas of likely
-          landslide disturbance across Dominica's steep terrain.
-        </p>
-        <div class="card-tags">
-          <span class="tag">GEE</span>
-          <span class="tag">Landsat 8</span>
-          <span class="tag">NDVI</span>
-          <span class="tag">Change Detection</span>
-        </div>
-        <span class="card-cta">View Project</span>
-      </a>
-
-      <!-- ── PYTHON / CHIRPS ── -->
-      <a href="#" class="card" target="_blank" data-tags="python">
-        <span class="card-coord">15.30°N · 61.39°W</span>
-        <p class="card-type">Climate Data · Python</p>
-        <h3>CHIRPS Extreme Rainfall Analysis</h3>
-        <p class="card-desc">
-          Extraction and analysis of CHIRPS daily rainfall time series for Dominica.
-          Computes 90th, 95th, and 99th percentile thresholds and maps return periods
-          for use as the rainfall hazard input in the compound flood risk model.
-        </p>
-        <div class="card-tags">
-          <span class="tag">Python</span>
-          <span class="tag">xarray</span>
-          <span class="tag">Rasterio</span>
-          <span class="tag">CHIRPS</span>
-          <span class="tag">Matplotlib</span>
-        </div>
-        <span class="card-cta">View on GitHub</span>
-      </a>
-
-      <!-- PLACEHOLDER -->
-      <div class="card card-placeholder" data-tags="all">
-        <span class="card-coord">0.00°N · 0.00°E</span>
-        <p class="card-type">Coming soon</p>
-        <h3>Next Project</h3>
-        <p class="card-desc">Another analysis or tool to be added here.</p>
-        <div class="card-tags"><span class="tag">TBD</span></div>
       </div>
 
+      <div class="sneak-grid">
+
+        <div class="card-sneak">
+          <span class="sneak-badge">In development</span>
+          <span class="card-coord">25.20°N · 55.27°E</span>
+          <p class="card-type">Remote Sensing · Google Earth Engine</p>
+          <h3>SAR Flood Extent Mapping — UAE</h3>
+          <p class="card-desc">
+            Sentinel-1 SAR change detection pipeline mapping flood extent across Al Ain
+            and Dubai following the April 2024 extreme rainfall event, calibrated against
+            optical imagery with adaptive thresholding.
+          </p>
+          <div class="card-tags">
+            <span class="tag">GEE</span>
+            <span class="tag">Sentinel-1</span>
+            <span class="tag">SAR</span>
+            <span class="tag">Change Detection</span>
+          </div>
+        </div>
+
+        <div class="card-sneak">
+          <span class="sneak-badge">In development</span>
+          <span class="card-coord">Variable AOI</span>
+          <p class="card-type">Spatial Analysis · Python</p>
+          <h3>Flood Risk Composite Scoring Tool</h3>
+          <p class="card-desc">
+            A reusable, documented Python pipeline for normalising, weighting, and
+            combining multi-source raster inputs into a composite risk index — built for
+            reproducibility across diverse hydrological and data-sparse contexts.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Rasterio</span>
+            <span class="tag">GeoPandas</span>
+            <span class="tag">NumPy</span>
+          </div>
+        </div>
+
+        <div class="card-sneak">
+          <span class="sneak-badge">In development</span>
+          <span class="card-coord">15.30°N · 61.39°W</span>
+          <p class="card-type">Remote Sensing · Google Earth Engine</p>
+          <h3>Post-Hurricane Vegetation Loss — Dominica</h3>
+          <p class="card-desc">
+            Pre- and post-Hurricane Maria NDVI comparison using Landsat 8 imagery to map
+            statistically significant vegetation loss and co-locate likely landslide
+            disturbance across Dominica's steep terrain.
+          </p>
+          <div class="card-tags">
+            <span class="tag">GEE</span>
+            <span class="tag">Landsat 8</span>
+            <span class="tag">NDVI</span>
+            <span class="tag">Change Detection</span>
+          </div>
+        </div>
+
+        <div class="card-sneak">
+          <span class="sneak-badge">In development</span>
+          <span class="card-coord">15.30°N · 61.39°W</span>
+          <p class="card-type">Climate Data · Python</p>
+          <h3>CHIRPS Extreme Rainfall Analysis</h3>
+          <p class="card-desc">
+            Extraction and analysis of CHIRPS daily rainfall time series for Dominica —
+            computing 90th, 95th, and 99th percentile thresholds and mapping return
+            periods for use as the rainfall hazard input in the compound flood model.
+          </p>
+          <div class="card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">xarray</span>
+            <span class="tag">Rasterio</span>
+            <span class="tag">CHIRPS</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </main>
 
@@ -384,17 +377,6 @@
       <a href="mailto:vanroonk.com">Email</a>
     </p>
   </footer>
-
-  <script>
-    function filterCards(tag, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('#projects-grid .card').forEach(card => {
-        const tags = card.dataset.tags || '';
-        card.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
-      });
-    }
-  </script>
 
 </body>
 </html>
