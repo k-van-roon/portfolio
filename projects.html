@@ -4,396 +4,198 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Katherine van Roon</title>
+  <meta name="description" content="Flood risk, remote sensing and climate resilience projects by Katherine van Roon." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .page-header {
-      padding: 5rem 0 3.5rem;
-    }
-
-    .section-block {
-      margin-bottom: 5rem;
-    }
-
-    .section-block-head {
-      margin-bottom: 2rem;
-    }
-
-    /* ── Featured project ── */
-    .featured-project {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 3rem;
-      align-items: stretch;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2.75rem;
-      margin-bottom: 5rem;
-    }
-
-    .featured-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--sage);
-      border: 1px solid var(--sage);
-      border-radius: 2px;
-      padding: 0.2rem 0.55rem;
-      margin-bottom: 1rem;
-    }
-
-    .featured-project h3 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .featured-project .card-coord {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .featured-motivation {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin: 1.5rem 0 0.5rem;
-    }
-
-    .featured-project p.body-text {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 0.9rem;
-    }
-
-    .featured-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem 1.5rem;
-      margin: 1.75rem 0;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .featured-stat .stat-num {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      color: var(--sage);
-      display: block;
-    }
-
-    .featured-stat .stat-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .featured-media {
-      width: 100%;
-      height: 100%;
-      min-height: 380px;
-      border-radius: 3px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .featured-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    @media (max-width: 860px) {
-      .featured-project {
-        grid-template-columns: 1fr;
-        padding: 1.75rem;
-      }
-      .featured-media {
-        order: -1;
-        min-height: 260px;
-      }
-    }
-
-    /* ── Sneak peek / in-progress section ── */
-    .sneak-intro {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      max-width: 620px;
-      margin-top: 0.5rem;
-    }
-
-    .sneak-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.4rem;
-      margin-top: 2.25rem;
-    }
-
-    .card-sneak {
-      border: 1px dashed var(--border);
-      border-radius: 4px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s;
-    }
-
-    .card-sneak:hover {
-      border-color: var(--sage);
-    }
-
-    .sneak-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 0.2rem 0.55rem;
-      margin-bottom: 1rem;
-      width: fit-content;
-    }
-
-    .sneak-badge::before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--sage);
-      display: inline-block;
-    }
-
-    .card-sneak h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .card-sneak .card-desc {
-      flex: 1;
-    }
-  </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
-    <ul>
-      <li><a href="projects.html" class="active">Projects</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="updates.html">Updates</a></li>
-      <li><a href="about.html#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <main>
-    <div class="page-header">
-      <span class="eyebrow">Portfolio</span>
-      <h2>Projects</h2>
-      <p class="section-intro">
-        GIS analyses, remote sensing workflows, risk assessments, and spatial tools —
-        built across flood hazard, climate resilience, and disaster risk reduction.
-      </p>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="index.html" class="site-title">Katherine van Roon</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="updates.html">Updates</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- ═══ FEATURED PROJECT — Dominica StoryMap ═══ -->
-    <div class="featured-project" id="featured" style="scroll-margin-top: 100px;">
-      <div>
-        <span class="featured-badge">Featured · Live StoryMap</span>
-        <span class="card-coord">15.30°N · 61.39°W · Dominica, Lesser Antilles</span>
-        <h3>Compound Flood Risk Assessment — Dominica</h3>
+  <div class="layout">
 
-        <p class="body-text">
+    <!-- ═══ PROFILE SIDEBAR (same on every page) ═══ -->
+    <aside class="sidebar">
+      <img src="photos/kath.jpg" alt="Katherine van Roon" class="profile-photo" />
+      <h2 class="profile-name">Katherine van Roon</h2>
+      <p class="profile-bio">Climate Hazards Consultant &amp; Developer at Fast Hazard</p>
+      <ul class="profile-links">
+        <li class="location"><span><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Netherlands</span></li>
+        <li><a href="mailto:vanroonk@gmail.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a></li>
+        <li><a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a></li>
+        <li><a href="https://github.com/k-van-roon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a></li>
+        <li><a href="CV_vanRoon.pdf" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>CV (PDF)</a></li>
+      </ul>
+    </aside>
+
+    <!-- ═══ CONTENT ═══ -->
+    <main class="content">
+      <h1 class="page-title">Projects</h1>
+
+      <p class="lead">
+        GIS analyses, remote sensing workflows, risk assessments and spatial tools, built
+        across flood hazard, climate resilience and disaster risk reduction.
+      </p>
+
+      <!-- ═══ FEATURED PROJECT — Dominica StoryMap ═══ -->
+      <figure class="figure" id="featured">
+        <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5" target="_blank" rel="noopener">
+          <img src="https://cdn.arcgis.com/sharing/rest/content/items/1fb8dcacd8534330a8e9ef0038e8fad5/resources/B4_PVa0T30aTDXL8JC311.jpg"
+               alt="Compound flood risk assessment for Dominica — StoryMap cover" />
+        </a>
+        <figcaption>
+          <strong>Compound Flood Risk Assessment — Dominica.</strong>
+          Building-level flood risk for a Small Island Developing State, built entirely from free,
+          globally available tools and open data. Live ArcGIS StoryMap.
+        </figcaption>
+      </figure>
+
+      <section class="section">
+        <span class="eyebrow">Featured · Risk assessment · 15.30°N 61.39°W</span>
+        <h2 class="section-title">How far can open data get you in a data-scarce island?</h2>
+
+        <p>
           Small Island Developing States face some of the world's most acute flood risk,
           but rarely the data infrastructure to assess it in detail. This project asks a
           simple question: how far can free, globally available tools and open data get
           you toward building-level flood risk information in a data-scarce SIDS context?
-          Hurricane Maria (2017) — which caused damage equivalent to roughly 226% of
-          Dominica's GDP in a single night — is the reference event that motivates the
+          Hurricane Maria (2017), which caused damage equivalent to roughly 226% of
+          Dominica's GDP in a single night, is the reference event that motivates the
           analysis and anchors the narrative.
         </p>
-
-        <p class="featured-motivation">What it does</p>
-        <p class="body-text">
-          Six FastFlood-modelled flood return period rasters (5–200yr) are combined with
+        <p>
+          Six FastFlood-modelled flood return period rasters (5–200 yr) are combined with
           Dominica's building footprint layer to classify individual buildings by flood
           frequency and depth threshold. Hazard and exposure are then combined into an
           island-wide risk raster following the UNDRR Risk = Hazard × Exposure framework,
-          reclassified into four risk classes, and delivered as an interactive StoryMap —
+          reclassified into four risk classes, and delivered as an interactive StoryMap:
           a methodology designed to be replicable in other data-scarce island contexts.
         </p>
 
-        <div class="featured-stats">
-          <div class="featured-stat">
-            <span class="stat-num">~39,750</span>
-            <span class="stat-label">Buildings classified</span>
-          </div>
-          <div class="featured-stat">
-            <span class="stat-num">6</span>
-            <span class="stat-label">Flood return periods</span>
-          </div>
-          <div class="featured-stat">
-            <span class="stat-num">4</span>
-            <span class="stat-label">Risk classes, island-wide</span>
-          </div>
-          <div class="featured-stat">
-            <span class="stat-num">2</span>
-            <span class="stat-label">Depth thresholds (0.25m / 0.50m)</span>
-          </div>
+        <div class="stats">
+          <div><span class="stat-num">~39,750</span><span class="stat-label">Buildings classified</span></div>
+          <div><span class="stat-num">6</span><span class="stat-label">Flood return periods</span></div>
+          <div><span class="stat-num">4</span><span class="stat-label">Risk classes, island-wide</span></div>
+          <div><span class="stat-num">2</span><span class="stat-label">Depth thresholds (0.25 m / 0.50 m)</span></div>
         </div>
 
-        <div class="card-tags" style="margin-bottom: 1.75rem;">
-          <span class="tag">QGIS</span>
-          <span class="tag">Python</span>
-          <span class="tag">FastFlood</span>
-          <span class="tag">WorldPop</span>
-          <span class="tag">ArcGIS Online</span>
-          <span class="tag">StoryMaps</span>
+        <div class="tags">
+          <span class="tag">QGIS</span><span class="tag">Python</span><span class="tag">FastFlood</span>
+          <span class="tag">WorldPop</span><span class="tag">ArcGIS Online</span><span class="tag">StoryMaps</span>
         </div>
 
-        <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5"
-           class="btn btn-primary" target="_blank" rel="noopener">
-          View the StoryMap ↗
-        </a>
-      </div>
+        <div class="actions">
+          <a href="https://storymaps.arcgis.com/stories/1fb8dcacd8534330a8e9ef0038e8fad5" class="btn" target="_blank" rel="noopener">View the StoryMap →</a>
+          <a href="index.html#story" class="btn btn-secondary">The Dominica fieldwork behind it →</a>
+        </div>
+      </section>
 
-      <div class="featured-media">
-        <img src="https://cdn.arcgis.com/sharing/rest/content/items/1fb8dcacd8534330a8e9ef0038e8fad5/resources/B4_PVa0T30aTDXL8JC311.jpg"
-             alt="Compound flood risk assessment for Dominica — StoryMap cover" />
-      </div>
-    </div>
-
-    <!-- ═══ SNEAK PEEK — projects in progress ═══ -->
-    <div class="section-block" id="sneak-peek" style="scroll-margin-top: 100px;">
-      <div class="section-block-head">
-        <span class="eyebrow">In progress</span>
-        <h2>What's next</h2>
-        <p class="sneak-intro">
-          These are already part of my day-to-day work — I'm in the process of pulling
-          each one out of client-proprietary form and rebuilding it as a clean, public
-          write-up. Full breakdowns and links will go live here as each is ready to share.
+      <!-- ═══ IN PROGRESS ═══ -->
+      <section class="section" id="sneak-peek">
+        <h2 class="section-title">What's next</h2>
+        <p class="section-sub">
+          These are already part of my day-to-day work. I'm pulling each one out of
+          client-proprietary form and rebuilding it as a clean, public write-up; full
+          breakdowns will go live here as each is ready.
         </p>
+
+        <div class="grid-3">
+          <article class="card">
+            <span class="eyebrow">Flood forecasting · FastFlood</span>
+            <h3>Data &amp; location-agnostic flood forecasting</h3>
+            <p>
+              A FastFlood-based methodology for rapid flood forecasts in places with little
+              to no local hydrological data, designed to run consistently regardless of
+              location or data availability. Presented at EGU 2026.
+            </p>
+            <div class="tags"><span class="tag">FastFlood</span><span class="tag">Forecasting</span><span class="tag">EGU</span></div>
+            <p class="card-foot"><a href="https://meetingorganizer.copernicus.org/EGU26/EGU26-11238.html" target="_blank" rel="noopener">EGU abstract →</a></p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Asset management · FastFlood API</span>
+            <h3>Asset management against hazards</h3>
+            <p>
+              An automated methodology built on the FastFlood API to keep hazard exposure
+              updated across a portfolio of locations, with retail chains, municipalities
+              and other multi-site asset owners in mind.
+            </p>
+            <div class="tags"><span class="tag">FastFlood API</span><span class="tag">Automation</span><span class="tag">Python</span></div>
+            <p class="card-foot"><span class="status">In development</span></p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Spatial analysis · Python</span>
+            <h3>Flood risk composite scoring tool</h3>
+            <p>
+              A reusable, documented Python pipeline for normalising, weighting and
+              combining multi-source raster inputs into a composite risk index, built for
+              reproducibility across diverse and data-sparse contexts.
+            </p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Rasterio</span><span class="tag">GeoPandas</span><span class="tag">NumPy</span></div>
+            <p class="card-foot"><span class="status">In development</span></p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Remote sensing · Earth Engine</span>
+            <h3>Post-cyclone vegetation loss — Mozambique</h3>
+            <p>
+              Pre- and post-cyclone NDVI comparison using Landsat/Sentinel-2 imagery to map
+              statistically significant vegetation loss and co-locate likely landslide
+              disturbance across affected terrain.
+            </p>
+            <div class="tags"><span class="tag">GEE</span><span class="tag">Landsat</span><span class="tag">NDVI</span><span class="tag">Change detection</span></div>
+            <p class="card-foot"><span class="status">In development</span></p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Climate data · Python</span>
+            <h3>CHIRPS rainfall extremes — Horn of Africa</h3>
+            <p>
+              CHIRPS daily rainfall time series across the Horn of Africa: 90th, 95th and
+              99th percentile thresholds and return-period mapping as a rainfall hazard
+              input for compound flood models.
+            </p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">xarray</span><span class="tag">Rasterio</span><span class="tag">CHIRPS</span></div>
+            <p class="card-foot"><span class="status">In development</span></p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Tool design · Launched 2025</span>
+            <h3>FastFlood Global &amp; tutorial suite</h3>
+            <p>
+              Involved from early design through implementation and testing of Fast Hazard's
+              global flood forecasting tool, and designed its tutorial material so practitioners
+              of any background can use it.
+            </p>
+            <div class="tags"><span class="tag">FastFlood</span><span class="tag">UX</span><span class="tag">Training</span></div>
+            <p class="card-foot"><a href="https://fastflood.org/global/" target="_blank" rel="noopener">Try the tool →</a></p>
+          </article>
+        </div>
+      </section>
+
+      <div class="callout">
+        <p>Want to talk about any of these, or something similar for your region? <a href="mailto:vanroonk@gmail.com">Get in touch →</a></p>
       </div>
+    </main>
+  </div>
 
-      <div class="sneak-grid">
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Location-agnostic</span>
-          <p class="card-type">Flood Forecasting · FastFlood</p>
-          <h3>Data & Location-Agnostic Flood Forecasting</h3>
-          <p class="card-desc">
-            A FastFlood-based methodology for generating rapid flood forecasts in places
-            with little to no local hydrological data — designed to run consistently
-            regardless of location or data availability. Featured in research presented
-            at EGU.
-          </p>
-          <div class="card-tags">
-            <span class="tag">FastFlood</span>
-            <span class="tag">Forecasting</span>
-            <span class="tag">EGU</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Multi-site</span>
-          <p class="card-type">Asset Management · FastFlood API</p>
-          <h3>Asset Management Against Hazards</h3>
-          <p class="card-desc">
-            An automated methodology built on the FastFlood API to keep hazard exposure
-            updated across a portfolio of locations — built with retail chains,
-            municipalities, and other multi-site asset owners in mind.
-          </p>
-          <div class="card-tags">
-            <span class="tag">FastFlood API</span>
-            <span class="tag">Automation</span>
-            <span class="tag">Python</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Variable AOI</span>
-          <p class="card-type">Spatial Analysis · Python</p>
-          <h3>Flood Risk Composite Scoring Tool</h3>
-          <p class="card-desc">
-            A reusable, documented Python pipeline for normalising, weighting, and
-            combining multi-source raster inputs into a composite risk index — built for
-            reproducibility across diverse hydrological and data-sparse contexts.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Rasterio</span>
-            <span class="tag">GeoPandas</span>
-            <span class="tag">NumPy</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">19.82°S · 34.84°E</span>
-          <p class="card-type">Remote Sensing · Google Earth Engine</p>
-          <h3>Post-Cyclone Vegetation Loss — Mozambique</h3>
-          <p class="card-desc">
-            Pre- and post-cyclone NDVI comparison using Landsat/Sentinel-2 imagery to map
-            statistically significant vegetation loss and co-locate likely landslide
-            disturbance across affected terrain.
-          </p>
-          <div class="card-tags">
-            <span class="tag">GEE</span>
-            <span class="tag">Landsat</span>
-            <span class="tag">NDVI</span>
-            <span class="tag">Change Detection</span>
-          </div>
-        </div>
-
-        <div class="card-sneak">
-          <span class="sneak-badge">In development</span>
-          <span class="card-coord">Horn of Africa</span>
-          <p class="card-type">Climate Data · Python</p>
-          <h3>CHIRPS Rainfall Extremes — Horn of Africa</h3>
-          <p class="card-desc">
-            Extraction and analysis of CHIRPS daily rainfall time series across the
-            Horn of Africa — computing 90th, 95th, and 99th percentile thresholds and
-            mapping return periods as a rainfall hazard input for compound flood models.
-          </p>
-          <div class="card-tags">
-            <span class="tag">Python</span>
-            <span class="tag">xarray</span>
-            <span class="tag">Rasterio</span>
-            <span class="tag">CHIRPS</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </main>
-
-  <footer>
+  <footer class="site-footer">
+    <p><a href="https://github.com/k-van-roon" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:vanroonk@gmail.com">Email</a></p>
     <p>© 2026 Katherine van Roon</p>
-    <p>
-      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
-      &nbsp;·&nbsp;
-      <a href="mailto:vanroonk@gmail.com">Email</a>
-    </p>
   </footer>
 
+  <script src="site.js"></script>
 </body>
 </html>
