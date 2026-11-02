@@ -418,6 +418,14 @@ p { margin: 0 0 1rem; }
 .dated-list li:last-child { border-bottom: none; }
 .dated-list .date { margin: 0; padding-top: 0.1rem; }
 
+/* ── Publications ── */
+.publication { margin-bottom: 1.5rem; }
+.publication h3 { font-size: 1.08rem; }
+.publication h3 a { color: var(--heading); text-decoration: none; }
+.publication h3 a:hover { color: var(--link); text-decoration: underline; }
+.pub-authors { margin-bottom: 0.15rem; }
+.pub-venue { color: var(--muted); font-size: 0.85rem !important; font-style: italic; }
+
 /* ── Update entries ── */
 .update { margin-bottom: 1.5rem; padding: 1.4rem 1.5rem; scroll-margin-top: 5.5rem; }
 .update-title { font-size: 1.35rem; margin-bottom: 0.5rem; }
