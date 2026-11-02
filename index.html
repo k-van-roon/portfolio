@@ -3,462 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Katherine van Roon — GIS & Climate Hazard</title>
+  <title>Katherine van Roon — Climate Hazards & GIS</title>
+  <meta name="description" content="Katherine van Roon, climate hazard consultant and GIS specialist at Fast Hazard: flood risk modelling, anticipatory action and disaster risk reduction." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Homepage-specific styles ── */
-
-    /* Hero */
-    #hero {
-      padding: 7rem 0 5.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .hero-visual {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 1.1rem;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-width: 440px;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      display: block;
-    }
-
-    .hero-coords {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--border);
-      line-height: 2;
-      text-align: right;
-    }
-
-    .hero-subtitle {
-      font-size: 1.08rem;
-      color: var(--muted);
-      max-width: 480px;
-      line-height: 1.8;
-      margin: 1.5rem 0 2rem;
-    }
-
-    .hero-links {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    /* Hero terrain divider — the signature: a hand-drawn elevation profile SVG */
-    .terrain-divider {
-      width: 100%;
-      height: 48px;
-      margin: 0;
-      display: block;
-      opacity: 0.35;
-    }
-
-    /* Homepage project preview (2 cards: featured + sneak peek) */
-    .projects-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.4rem;
-    }
-
-    /* Sneak-peek teaser card on the homepage */
-    .card-sneak-teaser {
-      border: 1px dashed var(--border);
-      border-radius: 4px;
-      padding: 1.9rem 1.75rem;
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s;
-    }
-
-    .card-sneak-teaser:hover {
-      border-color: var(--sage);
-    }
-
-    .sneak-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 0.2rem 0.55rem;
-      margin-bottom: 1rem;
-      width: fit-content;
-    }
-
-    .sneak-badge::before {
-      content: "";
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--sage);
-      display: inline-block;
-    }
-
-    .card-sneak-teaser h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .card-sneak-teaser .card-desc {
-      flex: 1;
-      margin-bottom: 1.1rem;
-    }
-
-    /* Homepage about strip */
-    .about-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-strip p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.85;
-      margin-bottom: 1rem;
-    }
-
-    .about-strip-skills {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .skill-group-label {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--sage);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .skills-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    /* Homepage updates preview */
-    .updates-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.4rem;
-    }
-
-    /* Featured project thumbnail on the homepage preview card */
-    .card-thumb {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-      border-radius: 3px;
-      border: 1px solid var(--border);
-      margin-bottom: 1.1rem;
-    }
-
-    .update-snapshot {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .update-snapshot:hover {
-      border-color: var(--sage);
-      transform: translateY(-3px);
-    }
-
-    .update-snapshot-img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-      background: var(--canopy);
-    }
-
-    .update-snapshot-body {
-      padding: 1.25rem 1.5rem 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .update-date {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--sage);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    .update-snapshot h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .update-snapshot p {
-      font-size: 0.98rem;
-      color: var(--muted);
-      line-height: 1.65;
-      flex: 1;
-      margin-bottom: 1rem;
-    }
-
-    .update-cta {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--sage);
-    }
-
-    @media (max-width: 780px) {
-      #hero { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-coords { display: none; }
-      .about-strip { grid-template-columns: 1fr; gap: 2rem; }
-    }
-  </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-name">K. van Roon <span>·</span> GIS</a>
-    <ul>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="updates.html">Updates</a></li>
-      <li><a href="about.html#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a href="index.html" class="site-title">Katherine van Roon</a>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="updates.html">Updates</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <main>
+  <div class="layout">
 
-    <!-- ═══ HERO ═══ -->
-    <section id="hero" style="border-top: none;">
-      <div>
-        <span class="eyebrow">Climate Hazards · Remote Sensing · GIS Analysis</span>
-        <h1>From satellite<br /><em>to street level.</em></h1>
-        <p class="hero-subtitle">
-          I build spatial tools and analysis that translate complex climate hazard data
-          into decisions communities can act on; before disaster strikes.
+    <!-- ═══ PROFILE SIDEBAR (same on every page) ═══ -->
+    <aside class="sidebar">
+      <img src="photos/kath.jpg" alt="Katherine van Roon" class="profile-photo" />
+      <h2 class="profile-name">Katherine van Roon</h2>
+      <p class="profile-bio">Climate Hazards Consultant &amp; Developer at Fast Hazard</p>
+      <ul class="profile-links">
+        <li class="location"><span><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Netherlands</span></li>
+        <li><a href="mailto:vanroonk@gmail.com"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a></li>
+        <li><a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>LinkedIn</a></li>
+        <li><a href="https://github.com/k-van-roon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a></li>
+        <li><a href="CV_vanRoon.pdf" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>CV (PDF)</a></li>
+      </ul>
+    </aside>
+
+    <!-- ═══ CONTENT ═══ -->
+    <main class="content">
+      <h1 class="page-title">About</h1>
+
+      <p class="lead">
+        <strong>Hi, I'm Kath!</strong> I'm a climate hazard consultant and geo-data specialist
+        based in the Netherlands, working at the intersection of flood risk modelling,
+        anticipatory action and disaster risk reduction. My work goes <em>from satellite
+        to street level</em>: turning complex hazard data into decisions communities can
+        act on, before disaster strikes.
+      </p>
+
+      <section class="panel">
+        <h2>What I do</h2>
+        <p>
+          At <a href="https://fasthazard.com" target="_blank" rel="noopener">Fast Hazard</a>,
+          I design scalable flood modelling workflows and translate dense technical outputs
+          into tools and products that real decision-makers can use, from national risk
+          assessments to community-level early warning. I'm also part of the Dutch
+          <strong>Disaster Risk Reduction and Surge Support (DRRS)</strong> near-real-time
+          flood team, providing rapid flood mapping and exposure analysis during active events.
         </p>
-        <div class="hero-links">
-          <a href="projects.html" class="btn btn-primary">View Projects</a>
-          <a href="about.html" class="btn btn-ghost">About me</a>
-          <a href="CV_vanRoon.pdf" class="btn btn-ghost" target="_blank">Download CV</a>
-        </div>
-      </div>
+        <p>
+          My technical work spans flood simulation (FastFlood, LISEM, HEC-RAS), remote sensing,
+          probabilistic uncertainty modelling and API development. The thread running through
+          all of it is the same: making outputs that people can actually use.
+        </p>
+        <p class="links-row"><a href="projects.html">See my projects →</a> &nbsp;·&nbsp; <a href="cv.html">CV &amp; skills →</a></p>
+      </section>
 
-      <!-- Photo + coordinates annotation -->
-      <div class="hero-visual">
-        <img src="photos/flood_example.jpg" alt="Flood modelling output example" class="hero-image" />
-        <div class="hero-coords" aria-hidden="true">
-          15°18′N · 61°23′W<br/>
-          Dominica, Lesser Antilles<br/>
-          ───────────<br/>
-        </div>
-      </div>
-    </section>
-
-    <!-- Terrain divider -->
-    <svg class="terrain-divider" viewBox="0 0 1100 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <polyline points="0,40 80,38 140,30 200,35 260,20 310,28 360,12 400,22 440,8 480,18 520,25 560,10 600,20 640,30 680,18 730,28 780,15 830,25 880,32 940,22 1000,35 1060,28 1100,32" fill="none" stroke="#2596be" stroke-width="1.2"/>
-      <polyline points="0,44 80,43 140,37 200,41 260,28 310,35 360,20 400,30 440,15 480,26 520,33 560,18 600,28 640,38 680,26 730,36 780,23 830,33 880,40 940,30 1000,42 1060,36 1100,40" fill="none" stroke="#2596be" stroke-width="0.6" opacity="0.5"/>
-    </svg>
-
-    <!-- ═══ PROJECTS PREVIEW ═══ -->
-    <section id="projects-preview">
-      <span class="eyebrow">Selected work</span>
-      <h2>Projects</h2>
-      <p class="section-intro">
-        A selection of flood risk analyses, remote sensing workflows, and climate resilience tools.
-      </p>
-
-      <div class="projects-preview">
-
-        <a href="projects.html#featured" class="card">
-          <img src="https://cdn.arcgis.com/sharing/rest/content/items/1fb8dcacd8534330a8e9ef0038e8fad5/resources/B4_PVa0T30aTDXL8JC311.jpg"
-               alt="Compound flood risk assessment for Dominica" class="card-thumb" />
-          <span class="card-coord">15.30°N · 61.39°W</span>
-          <p class="card-type">Risk Assessment · StoryMap</p>
-          <h3>Compound Flood Risk — Dominica</h3>
-          <p class="card-desc">
-            Building-level flood risk index for Dominica combining six flood return period
-            rasters with a ~39,750-building exposure layer, following the UNDRR
-            Hazard × Exposure framework and framed around Hurricane Maria (2017).
-          </p>
-          <div class="card-tags">
-            <span class="tag">QGIS</span>
-            <span class="tag">Python</span>
-            <span class="tag">FastFlood</span>
-            <span class="tag">WorldPop</span>
-            <span class="tag">StoryMaps</span>
-          </div>
-          <span class="card-cta">View Project</span>
-        </a>
-
-        <a href="projects.html#sneak-peek" class="card-sneak-teaser">
-          <span class="sneak-badge">In development</span>
-          <h3>More on the way</h3>
-          <p class="card-desc">
-            A location-agnostic flood forecasting methodology, an automated hazard
-            monitoring tool for multi-site asset owners, and a reusable composite
-            risk-scoring tool are all in progress.
-          </p>
-          <span class="update-cta">See what's in progress →</span>
-        </a>
-
-      </div>
-
-      <div style="margin-top: 2rem;">
-        <a href="projects.html" class="btn btn-ghost">All projects →</a>
-      </div>
-    </section>
-
-    <!-- ═══ ABOUT STRIP ═══ -->
-    <section id="about-strip">
-      <span class="eyebrow">Background</span>
-      <h2>About</h2>
-      <div class="about-strip">
-        <div>
+      <div class="grid-2 section">
+        <section class="card">
+          <h3>My journey</h3>
           <p>
-            I'm a climate hazard consultant and geo-data specialist based in the Netherlands,
-            working at the intersection of flood risk modelling, anticipatory action, and
-            disaster risk reduction.
+            Born and raised in Chicago to Dutch and American parents, I moved to the
+            Netherlands for a BSc at the ATLAS Honours programme (University of Twente),
+            followed by an MSc in Spatial Engineering at ITC, with fieldwork in Dominica
+            and an internship at Deltares.
           </p>
+          <p class="card-foot"><a href="#story">Read the full story →</a></p>
+        </section>
+        <section class="card">
+          <h3>Beyond work</h3>
           <p>
-            At <a href="https://fasthazard.com" style="color:var(--sage); text-underline-offset:3px;">Fast Hazard</a>,
-            I design scalable flood modelling workflows and help translate dense technical
-            outputs into tools and products that real decision-makers can act on; from
-            national risk assessments to community-level early warning systems.
+            When I'm not looking at maps, you'll find me on a football pitch (rain or shine),
+            baking, sewing, or out for a run through the farmland outside the city. I'm also
+            back in Dutch class, working towards B2.
           </p>
-          <div style="margin-top: 1.5rem;">
-            <a href="about.html" class="btn btn-ghost">Full profile →</a>
-          </div>
+          <p class="card-foot"><a href="#outside-work">Outside of work →</a></p>
+        </section>
+      </div>
+
+      <!-- Latest updates -->
+      <section class="section">
+        <h2 class="section-title">Latest updates</h2>
+        <ul class="dated-list">
+          <li><span class="date">August 2026</span><a href="updates.html#dutch-class-2026">Headed back to Dutch class</a></li>
+          <li><span class="date">July 2026</span><a href="updates.html#egu-isprs-2026">Two conferences, two continents: EGU Vienna &amp; ISPRS Toronto</a></li>
+          <li><span class="date">June 2026</span><a href="updates.html#drrs-flood-day-2026">DRRS Flood Day in Utrecht</a></li>
+        </ul>
+        <p class="links-row"><a href="updates.html">All updates →</a></p>
+      </section>
+
+      <!-- ═══ FULL STORY ═══ -->
+      <section class="section" id="story">
+        <h2 class="section-title">My story</h2>
+        <p class="section-sub">How a kid from Chicago ended up modelling floods in the Netherlands.</p>
+
+        <p>
+          I grew up in Chicago, in the United States, to Dutch and American parents; though
+          my Dutch father grew up in South America, so we were a culturally confused family.
+          (It's also the reason my Spanish is very good!) One of my parents worked for an
+          airline while I was growing up, which meant a lot of travelling, especially back
+          to the Netherlands, which we made sure to visit every year.
+        </p>
+
+        <div class="gallery cols-2">
+          <img src="photos/chicago.jpg" alt="Chicago skyline" />
+          <img src="photos/kath_NL_2008.jpg" alt="Young Katherine in the Netherlands, 2008" />
         </div>
 
-        <div class="about-strip-skills">
-          <div>
-            <p class="skill-group-label">Tools & Platforms</p>
-            <div class="skills-row">
-              <span class="skill-pill">QGIS</span>
-              <span class="skill-pill">ArcGIS Pro</span>
-              <span class="skill-pill">Google Earth Engine</span>
-              <span class="skill-pill">FastFlood CLI</span>
-              <span class="skill-pill">StoryMaps</span>
-            </div>
-          </div>
-          <div>
-            <p class="skill-group-label">Languages & Libraries</p>
-            <div class="skills-row">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">GeoPandas</span>
-              <span class="skill-pill">Rasterio</span>
-              <span class="skill-pill">JavaScript (GEE)</span>
-            </div>
-          </div>
-          <div>
-            <p class="skill-group-label">Methods</p>
-            <div class="skills-row">
-              <span class="skill-pill">Flood Modelling</span>
-              <span class="skill-pill">SAR Change Detection</span>
-              <span class="skill-pill">Risk Assessment</span>
-              <span class="skill-pill">Anticipatory Action</span>
-            </div>
-          </div>
+        <p>
+          I always loved the Netherlands; getting to visit family, and just being there,
+          so when it came time to choose a university, I decided to move and start my BSc
+          at the University of Twente, at the Honours College. I had a great time at ATLAS,
+          getting to explore all sorts of topics, from civil engineering to earth observation
+          to natural hazards. It was during my bachelor's that I realised how much I liked
+          studying natural hazards specifically, which led me to Spatial Engineering for my
+          master's, also at Twente, but this time at the Faculty of Geo-Information Science
+          and Earth Observation (ITC). That faculty let me combine the technical side of the
+          work, remote sensing and spatial analysis, with the Natural Hazards and Disaster
+          Risk Reduction working group.
+        </p>
+
+        <p>
+          That turned out to be a great decision! Not only did I learn a lot, but I also got
+          a once-in-a-lifetime opportunity for my master's thesis: hands-on fieldwork on the
+          island of <strong>Dominica</strong>. Dominica is a Small Island Developing State with
+          a long history of devastating flooding and hurricane damage, and a strong national
+          push to become more climate resilient; a perfect fit for my research. While I was
+          there, I took in-field measurements to improve my flood model and spoke directly
+          with local officials to help design a more specialised solution for their situation.
+        </p>
+
+        <div class="gallery">
+          <img src="photos/dominica_jungle.jpg" alt="Fieldwork in the Dominican jungle" />
+          <img src="photos/fieldwork_measurements.jpg" alt="Taking measurements of the river course" />
+          <img src="photos/commonwealth.jpg" alt="Visit to the Commonwealth of Dominica" />
+          <img src="photos/disaster_management.jpg" alt="Visit to the Office of Disaster Management" />
         </div>
+
+        <p>
+          I also spent six months at <strong>Deltares</strong> as part of my MSc, which meant
+          getting to live in Delft and meet a new team; and funnily enough, my work at Fast Hazard now
+          crosses paths quite often with my old group there. After finishing my MSc, I started
+          at <strong>Fast Hazard</strong>, where I still am today.
+        </p>
+
+        <div class="gallery cols-2">
+          <img src="photos/delft.jpg" alt="Katherine in Delft" />
+          <img src="photos/deltares.jpg" alt="Katherine wearing her Deltares lanyard" />
+        </div>
+      </section>
+
+      <!-- ═══ APPROACH ═══ -->
+      <section class="panel" id="approach">
+        <h2>How I work</h2>
+        <p>
+          I have experience working across the full project lifecycle, from scoping data requirements and building
+          processing pipelines, to producing deliverables and presenting findings to (non-)technical stakeholders.
+          I've coordinated multidisciplinary teams under genuinely difficult conditions: emergency flood response,
+          complex multi-partner consortia, and projects where the operational stakes are high.
+        </p>
+        <p>
+          Documentation, reproducibility, and clear communication are not afterthoughts for me;
+          they are part of what it means to do the work properly.
+        </p>
+        <p>
+          My passion lies in making climate resilience and natural hazard risk information
+          accessible and easier to understand for all stakeholders. The intersection between climate risk and vulnerable
+          populations fuels my work, and I want to keep finding opportunities that challenge me in this area and where
+          I can tackle complex socio-technical problems with spatial data and modelling.
+          Spatial data has the ability to arm those vulnerable to the impacts of climate change, and I want to
+          help them access this information!
+        </p>
+      </section>
+
+      <!-- ═══ OUTSIDE OF WORK ═══ -->
+      <section class="section" id="outside-work">
+        <h2 class="section-title">Outside of work</h2>
+        <p class="section-sub">Most of it involves being active or working with my hands.</p>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Football</h3>
+            <p>I've played football (soccer) all my life and still love it to this day; rain or shine :).</p>
+            <div class="gallery cols-2" style="margin-bottom:0">
+              <img src="photos/football.jpg" alt="Katherine playing football in the rain" />
+              <img src="photos/football_2.jpg" alt="Katherine playing football" />
+            </div>
+          </article>
+          <article class="card">
+            <h3>Baking &amp; cooking</h3>
+            <p>I've loved baking since I was a kid, and got into cooking at university so I could eat real food even in my student house.</p>
+            <div class="gallery cols-2" style="margin-bottom:0">
+              <img src="photos/baking.jpg" alt="Katherine making fresh pasta" />
+              <img src="photos/baking_2.jpg" alt="Cardamom buns Katherine made" />
+            </div>
+          </article>
+          <article class="card">
+            <h3>Crafting &amp; the outdoors</h3>
+            <p>Making my own clothes, knitting and embroidery, plus a jog when the weather's nice; the best route is through farmland outside the city.</p>
+            <div class="gallery cols-2" style="margin-bottom:0">
+              <img src="photos/sewing.jpg" alt="Katherine sewing" />
+              <img src="photos/park.jpg" alt="Katherine at the park" />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="callout" id="contact">
+        <p>
+          Interested in collaborating, discussing a project, or asking about my work? I'm open to
+          conversations about climate hazard consulting, GIS analysis and tool development.
+          <a href="mailto:vanroonk@gmail.com">Email me →</a>
+        </p>
       </div>
-    </section>
+    </main>
+  </div>
 
-    <!-- ═══ UPDATES PREVIEW ═══ -->
-    <section id="updates-preview">
-      <span class="eyebrow">Latest</span>
-      <h2>Updates</h2>
-      <p class="section-intro">
-        Notes from the field — conferences, projects, and things I'm learning.
-      </p>
-
-      <div class="updates-preview">
-
-        <!-- UPDATE SNAPSHOT 1 — Back to Dutch class, August 2026 -->
-        <a href="updates.html#dutch-class-2026" class="update-snapshot">
-          <img src="photos/kath_windmill.jpg" alt="Kath as a child in the Netherlands" class="update-snapshot-img" />
-          <div class="update-snapshot-body">
-            <p class="update-date">August 2026</p>
-            <h3>Headed back to Dutch class</h3>
-            <p>Starting night classes in September, working toward B2 Dutch by early 2027 — finally putting time behind a language I've understood far longer than I've been able to speak.</p>
-            <span class="update-cta">Read more →</span>
-          </div>
-        </a>
-
-        <!-- UPDATE SNAPSHOT 2 — EGU / ISPRS, July 2026 -->
-        <a href="updates.html#egu-isprs-2026" class="update-snapshot">
-          <img src="photos/EGU.jpg" alt="EGU Vienna 2026" class="update-snapshot-img" />
-          <div class="update-snapshot-body">
-            <p class="update-date">July 2026</p>
-            <h3>Two conferences, two continents</h3>
-            <p>Presented a data-agnostic FastFlood approach at EGU Vienna, then organised a tutorial session at the ISPRS symposium in Toronto.</p>
-            <span class="update-cta">Read more →</span>
-          </div>
-        </a>
-
-        <!-- UPDATE SNAPSHOT 3 — DRRS Flood Day, June 2026 -->
-        <a href="updates.html#drrs-flood-day-2026" class="update-snapshot">
-          <img src="photos/drrs_day.jpg" alt="DRRS Flood Day in Utrecht" class="update-snapshot-img" />
-          <div class="update-snapshot-body">
-            <p class="update-date">June 2026</p>
-            <h3>DRRS Flood Day in Utrecht</h3>
-            <p>Met the DRRS Flood team in person for the first time and served solo as an expert, prepping for the upcoming hurricane season.</p>
-            <span class="update-cta">Read more →</span>
-          </div>
-        </a>
-
-      </div>
-
-      <div style="margin-top: 2rem;">
-        <a href="updates.html" class="btn btn-ghost">All updates →</a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
+  <footer class="site-footer">
+    <p><a href="https://github.com/k-van-roon" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:vanroonk@gmail.com">Email</a></p>
     <p>© 2026 Katherine van Roon</p>
-    <p>
-      <a href="https://github.com/k-van-roon" target="_blank">GitHub</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/katherinevanroon/" target="_blank">LinkedIn</a>
-      &nbsp;·&nbsp;
-      <a href="mailto:vanroonk@gmail.com">Email</a>
-    </p>
   </footer>
 
+  <script src="site.js"></script>
 </body>
 </html>
